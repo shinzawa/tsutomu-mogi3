@@ -1,0 +1,120 @@
+.shops{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 35px 10px;
+}
+
+.shop__card {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    background-color: #FFFFFF;
+    width: 600px;
+    height: 560px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 4px 4px 8px -2px rgba(0, 0, 0, 0.5);
+}
+
+.shop__img{
+    object-fit: cover;
+    width: 100%;
+    height: 50%;
+    aspect-ratio: 1/1;
+    display: block;
+}
+
+.shop__content {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 100%;
+    height: auto;
+    margin-bottom: 2px;
+    margin-left: 30px;
+}
+
+.shop__name{
+    text-align: left;
+    margin-top: 10px;
+    font-size: 3em;
+    font-weight: bold;
+    color: #000000;
+    margin-bottom: 2px;
+}
+
+.shop__details {
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    font-size: 1.5em;
+    color: #5F5F5F;
+}
+
+.shop__area, .shop__genre {
+    margin-right: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.shop__button-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 194px;
+    height: 62px;
+    border-radius: 10px;
+    background-color: #3560F6;
+    margin-top: 2px;
+    margin-left: 30px;
+}
+
+.shop__card-footer {
+    display: flex;
+    justify-content: space-between;
+    vertical-align: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 2px;
+}
+
+.shop__button {
+    color: #FFFFFF;
+    font-size: 1.5em;
+}
+
+.shop__heart{
+    font-size: 4em;
+    color: #EEEEEE;
+    margin-right: 30px;
+}
+
+.border{
+    margin-top: 50px;
+}
+
+.border__list{
+    border-bottom: 1px solid #5F5F5F;
+    display: flex;
+}
+
+.border__list li:first-child{
+    padding-left: 10%;
+}
+
+.border__list li{
+    padding: 20px 80px;
+    font-weight: bold;
+}
+
+@media (min-width: 768px) and (max-width: 850px) {
+    .shop__img--container {
+        width: 25vw;
+        height: 10em;
+    }
+}
