@@ -12,11 +12,11 @@ class ShopController extends Controller
         if ($shop_id) {
             // ショップの詳細を表示するロジック
             $shop = Shop::find($shop_id);
-            return view('shop.detail', ['shop_id' => $shop_id]);
+            return view('shop.detail', ['shop' => $shop]);
         } else {
             // ショップの一覧を表示するロジック
             $shops = Shop::all();
-            return view('index', ['shops' => $shops]);
+            return view('shop.index', ['shops' => $shops]);
         }
     }
 }
