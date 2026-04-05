@@ -8,7 +8,6 @@
 
 @section('content')
 
-@include('components.header')
 <div class="container">
     <div class="shops">
         @foreach ($shops as $shop)

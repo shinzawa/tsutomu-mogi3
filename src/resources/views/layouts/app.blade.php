@@ -12,28 +12,8 @@
 </head>
 
 <body>
-    <header class="header">
-        <div class="header__inner">
-            <div class="header-utilities">
-                <a class="header__logo" href="/">
-                    Rese
-                </a>
-                <nav>
-                    <ul class="header-nav">
-                        <li class="header-nav__item">
-                            <a class="header-nav__link" href="/mypage">マイページ</a>
-                        </li>
-                        <li class="header-nav__item">
-                            <form>
-                                <button class="header-nav__button">ログアウト</button>
-                            </form>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </header>
 
+@include('components.header')
     <main>
         @yield('content')
     </main>
