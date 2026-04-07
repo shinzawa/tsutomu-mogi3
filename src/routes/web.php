@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\MenuController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +15,8 @@ use App\Http\Controllers\ShopController;
 */
 
 Route::get('/', [ShopController::class, 'show'])->name('shop.index');
-
+Route::get('/menu1', [MenuController::class, 'show'])->name('menu.menu1');
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/detail/{shop_id}', [ShopController::class, 'show'])->name('shop.detail');
+    Route::get('/menu2', [MenuController::class, 'show'])->name('menu.menu2');
 });

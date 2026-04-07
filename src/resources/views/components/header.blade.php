@@ -16,7 +16,7 @@
             </div>
         </a>
     </div>
-    @if( !in_array(Route::currentRouteName(), ['register', 'login', 'verification.notice']) )
+    @if( !in_array(Route::currentRouteName(), ['register', 'login', 'verification.notice', 'shop.detail']) )
     <div class="header-search__wrapper">
         <form class="header-search" action="/" method="get">
             @csrf
