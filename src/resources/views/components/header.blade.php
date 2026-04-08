@@ -1,22 +1,30 @@
 <header class="header">
     <div class="header__logo">
         <a href="/">
+            @if( in_array(Route::currentRouteName(), ['menu.menu1', 'menu.menu2']) )
+            <div class="header__menu">
+                <div class="icon-menu">
+                    <div class="icon-menu__cross"></div>
+                </div>
+            </div>
+            @else
             <div class="header__inner">
-                <div class=icon-rese>
-                    <div class=icon-rese__topline>
+                <div class="icon-rese">
+                    <div class="icon-rese__topline">
                     </div>
-                    <div class=icon_rese__midline>
+                    <div class="icon_rese__midline">
                     </div>
-                    <div class=icon_rese__bottomline>
+                    <div class="icon_rese__bottomline">
                     </div>
                 </div>
                 <a class="header__logo-name" href="/">
                     Rese
                 </a>
             </div>
+            @endif
         </a>
     </div>
-    @if( !in_array(Route::currentRouteName(), ['register', 'login', 'verification.notice', 'shop.detail']) )
+    @if( in_array(Route::currentRouteName(), ['shop.index']) )
     <div class="header-search__wrapper">
         <form class="header-search" action="/" method="get">
             @csrf

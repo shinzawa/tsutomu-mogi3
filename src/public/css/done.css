@@ -1,0 +1,35 @@
+.done__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 900px;
+    height: 604px;
+    margin: 80px auto;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow:  4px 4px 8px rgba(0,0,0,0.5);
+}
+
+.done__container h1 {
+    font-size: 42px;
+    color: #000000;
+    margin-bottom: 80px;
+}
+
+.done__btn {
+    display: flex;
+    width: 110px;
+    height: 62px;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 10px;
+    background-color: #3560F6;
+    color: #FFFFFF;
+    font-size: 32px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
+}

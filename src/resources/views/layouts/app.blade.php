@@ -11,9 +11,13 @@
     @yield('css')
 </head>
 
+@if( in_array(Route::currentRouteName(), ['menu.menu1', 'menu.menu2']) )
+<body class="menu">
+@else
 <body>
+@endif
 
-@include('components.header')
+    @include('components.header')
     <main>
         @yield('content')
     </main>

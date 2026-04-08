@@ -1,0 +1,68 @@
+.register-form {
+    width: 800px;
+    height: 554px;
+    margin: 420px auto;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #FFFFFFFF;
+    box-shadow: 4px 4px 8px -2px rgba(0, 0, 0, 0.5);
+}
+.register-form__heading {
+    display: flex;
+    align-items: center;
+    padding-left: 40px;
+    width: 100%;
+    height: 120px;
+    text-align: left;
+    margin-bottom: 30px;
+    font-size: 36px;
+    color: #FFFFFF;
+    background-color: #3560F6;
+}
+
+.register-form__group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-top: 30px;
+}
+/* アイコンの設定 */
+.register-form__group i {
+    margin-left: 50px;
+    margin-right: 10px;
+    font-size: 36px;
+
+    color: #4B4B4B;
+    transition: 0.3s;
+}
+/* 入力枠の設定（下線のみ） */
+.register-form__input {
+    padding-left: 0px; /* アイコン分の左パディング */
+    border: none;
+    border-bottom: 2px solid #000000; /* ★下線 */
+    outline: none;
+    font-size: 36px;
+    transition: 0.3s;
+}
+
+.register-form__form {
+    display: flex;
+    flex-direction: column;
+}
+
+.register-form__btn {
+    display: flex;
+    width: 164px;
+    height: 62px;
+    margin-right: 50px;
+    justify-content: center;
+    align-items: center;
+    align-self: flex-end;
+    border: none;
+    border-radius: 10px;
+    background-color: #3560F6;
+    color: #FFFFFF;
+    font-size: 32px;
+    cursor: pointer;
+    transition: 0.3s;
+}

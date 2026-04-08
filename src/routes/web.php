@@ -15,8 +15,18 @@ use App\Http\Controllers\MenuController;
 */
 
 Route::get('/', [ShopController::class, 'show'])->name('shop.index');
-Route::get('/menu1', [MenuController::class, 'show'])->name('menu.menu1');
+Route::get('/menu2', [MenuController::class, 'show'])->name('menu.menu2');
+
+Route::get('/register/thanks', function () {
+    return view('auth.thanks');
+})->name('register.thanks');
+
+Route::get('/done', function () {
+    return view('shop.done');
+})->name('shop.done');
+
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/detail/{shop_id}', [ShopController::class, 'show'])->name('shop.detail');
-    Route::get('/menu2', [MenuController::class, 'show'])->name('menu.menu2');
+    Route::get('/mypage', [ShopController::class, 'mypage'])->name('shop.mypage');
+    Route::get('/menu1', [MenuController::class, 'show'])->name('menu.menu1');
 });
