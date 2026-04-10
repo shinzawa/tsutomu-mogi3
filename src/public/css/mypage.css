@@ -1,0 +1,172 @@
+.container {
+    display: flex;
+}
+
+
+.reservation__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: top;
+    width: 974px;
+    height: 1179px;
+    margin-top: 75px;
+    margin-left: 70px;
+    /* width: 100%;
+    height: 100%; */
+}
+
+.reservation__title {
+    font-size: 3em;
+    font-weight: bold;
+    color: #FFFFFF;
+    margin-top: 30px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column; /* ← 縦並び */
+    width: 100%;
+    height: 100%;
+}
+
+.date__input {
+    width: 352px;
+    height: 62px;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    margin-bottom: 30px;
+}
+.time__select, .people__select {
+    width: 978px;
+    height: 62px;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    margin-bottom: 30px;
+        font-size: 2.2em;
+    font-weight: bold;
+    color: #000000;
+    padding: 0 20px;
+}
+
+input {
+    font-size: 2.2em;
+    font-weight: bold;
+    color: #000000;
+    padding: 0 20px;
+}
+
+.reservation__items {
+    width: 954px;
+    height: 320px;
+    background-color: #5580f7;
+    border-radius: 10px;
+    font-size: 2em;
+}
+
+table th {
+    text-align: left;
+}
+
+table th, table td {
+    padding: 10px 30px;
+}
+
+.table__wrapper {
+    padding: 30px 10px;
+}
+
+.shop__right {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 1140px;
+    height: 1320px;
+    margin-top: 50px;
+    margin-left: 200px;
+}
+
+.shop__img{
+    object-fit: cover;
+    width: 100%;
+    height: 50%;
+    aspect-ratio: 1/1;
+    display: block;
+}
+
+.shop__content {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 100%;
+    height: auto;
+    margin-bottom: 2px;
+    margin-left: 30px;
+}
+
+.shop__name{
+    text-align: left;
+    margin-top: 10px;
+    font-size: 3em;
+    font-weight: bold;
+    color: #000000;
+    margin-bottom: 2px;
+}
+
+.shop__details {
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    font-size: 1.5em;
+    color: #5F5F5F;
+}
+
+.shop__area, .shop__genre {
+    margin-right: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.shop__button-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 194px;
+    height: 62px;
+    border-radius: 10px;
+    background-color: #3560F6;
+    margin-top: 2px;
+    margin-left: 30px;
+}
+
+.shop__card-footer {
+    display: flex;
+    justify-content: space-between;
+    vertical-align: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 2px;
+}
+
+.shop__button {
+    color: #FFFFFF;
+    font-size: 1.5em;
+}
+
+.shop__heart{
+    font-size: 4em;
+    color: #EEEEEE;
+    margin-right: 30px;
+}
+
+@media (min-width: 768px) and (max-width: 850px) {
+    .shop__img--container {
+        width: 25vw;
+        height: 10em;
+    }
+}

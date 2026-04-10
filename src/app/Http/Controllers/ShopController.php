@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Shop;
+use App\Models\Reserve;
 
 class ShopController extends Controller
 {
@@ -18,5 +19,22 @@ class ShopController extends Controller
             $shops = Shop::all();
             return view('shop.index', ['shops' => $shops]);
         }
+    }
+
+    public function mypage()
+    {
+        $query = Shop::query();
+        $query->whereIn('id', function ($query) {
+            $query->select('shop_id')
+            ->from('likes')
+            ->where('user_id', auth()->id());
+        });
+        $shops = $query->get();
+
+        $reservations = Reserve::with('shop')
+                 ->where('user_id', auth()->id())
+                 ->get();
+
+        return view('shop.mypage', compact(['shops','reservations']));
     }
 }

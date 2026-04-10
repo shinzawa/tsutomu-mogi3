@@ -19,4 +19,18 @@ class Shop extends Model
         'img_url',
     ];
 
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
+
+    public function likes()
+    {
+        return $this->hasMany('App\Models\Like');
+    }
+
+    public function reserves()
+    {
+        return $this->hasMany('App\Models\Reserve');
+    }
 }
