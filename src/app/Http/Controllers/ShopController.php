@@ -34,7 +34,7 @@ class ShopController extends Controller
         $reservations = Reserve::with('shop')
                  ->where('user_id', auth()->id())
                  ->get();
-
-        return view('shop.mypage', compact(['shops','reservations']));
+        $user = auth()->user();
+        return view('shop.mypage', compact(['user', 'shops', 'reservations']));
     }
 }

@@ -8,60 +8,90 @@
     flex-direction: column;
     justify-content: left;
     align-items: top;
-    width: 974px;
-    height: 1179px;
-    margin-top: 75px;
-    margin-left: 70px;
+    width: 887px;
+    height: auto;
+    margin-top: 150px;
+    margin-left: 240px;
     /* width: 100%;
     height: 100%; */
+    color: #e6ecfe;
 }
 
 .reservation__title {
     font-size: 3em;
     font-weight: bold;
-    color: #FFFFFF;
+    color: #000000;
     margin-top: 30px;
-}
 
-.form {
-    display: flex;
-    flex-direction: column; /* ← 縦並び */
-    width: 100%;
-    height: 100%;
-}
-
-.date__input {
-    width: 352px;
-    height: 62px;
-    border-radius: 10px;
-    background-color: #FFFFFF;
-    margin-bottom: 30px;
-}
-.time__select, .people__select {
-    width: 978px;
-    height: 62px;
-    border-radius: 10px;
-    background-color: #FFFFFF;
-    margin-bottom: 30px;
-        font-size: 2.2em;
-    font-weight: bold;
-    color: #000000;
-    padding: 0 20px;
-}
-
-input {
-    font-size: 2.2em;
-    font-weight: bold;
-    color: #000000;
-    padding: 0 20px;
 }
 
 .reservation__items {
-    width: 954px;
-    height: 320px;
-    background-color: #5580f7;
+    width: 887px;
+    height: 538px;
+    background-color: #3560F6;
     border-radius: 10px;
     font-size: 2em;
+}
+
+.reservation__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.reservation__header {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.reservation__name {
+    margin:0 auto;
+}
+.reservation__cancel-wrapper {
+    width: 50px;
+    height: 50px;
+    margin:60px 60px;
+}
+.circle-cross {
+  /* 円のスタイル */
+  width: 50px;
+  height: 50px;
+  background-color: #3560f6;
+  border: 4px solid #e6ecfe;
+  border-radius: 50%; /* 正円にする */
+  position: relative; /* 擬似要素の基準にする */
+  cursor: pointer;
+}
+
+/* クロスの線の共通スタイル */
+.circle-cross::before,
+.circle-cross::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60%;  /* 線の長さ */
+  height: 4px; /* 線の太さ */
+  background-color: #e6ecfe;
+  border-radius: 2px;
+}
+
+/* 1本目の線（右下がり） */
+.circle-cross::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+/* 2本目の線（右上がり） */
+.circle-cross::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.clock__wrapper {
+    width: 90px;
+    height: 90px;
 }
 
 table th {
@@ -76,15 +106,59 @@ table th, table td {
     padding: 30px 10px;
 }
 
+.shop {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: top;
+    width: 887px;
+    height: auto;
+    margin-top: 50px;
+    margin-left: 240px;
+}
+
+.shop__subtitle {
+    font-size: 3em;
+    color: #5F5F5F;
+    margin-top: 5px;
+}
+
+.shop__title {
+    font-size: 3em;
+    font-weight: bold;
+    color: #000000;
+    margin-top: 5px;
+}
+
 .shop__right {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
-    width: 1140px;
-    height: 1320px;
-    margin-top: 50px;
-    margin-left: 200px;
+    width: 1440px;
+    height: auto;
+    margin-top: 0px;
+}
+
+.shop__name-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    width: 400px;
+    height: auto;
+}
+
+.shop__card {
+    display: flex;
+    flex-direction: column;
+    margin-right: 120px;
+    align-items: left;
+    background-color: #FFFFFF;
+    width: 600px;
+    height: 560px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 4px 4px 8px -2px rgba(0, 0, 0, 0.5);
 }
 
 .shop__img{
@@ -137,11 +211,11 @@ table th, table td {
     justify-content: center;
     align-items: center;
     width: 194px;
-    height: 62px;
+    height: 60px;
     border-radius: 10px;
     background-color: #3560F6;
-    margin-top: 2px;
-    margin-left: 30px;
+    
+    margin-left: 40px;
 }
 
 .shop__card-footer {
@@ -150,6 +224,7 @@ table th, table td {
     vertical-align: center;
     align-items: center;
     width: 100%;
+    height: 70px;
     margin-top: 2px;
 }
 
@@ -170,3 +245,43 @@ table th, table td {
         height: 10em;
     }
 }
+
+.clock {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 4px solid #3560F6;
+    position: relative;
+    background-color: #e6ecfe;
+    margin-top: 25px;
+    margin-left: 25px;
+}
+
+.clock::before {
+    content: '';
+    position: absolute;
+    inset: 5px;
+    border-radius: 50%;
+    background:
+        repeating-conic-gradient(
+            from -90deg,
+            #3560F6 0deg 6deg,
+            transparent 7deg 30deg
+        );
+    mask:
+        -webkit-mask: radial-gradient(circle, transparent 60%, black 61%);
+        mask: radial-gradient(circle, transparent 60%, black 61%);
+}
+
+  /* 針の共通設定 */
+.hand {
+    position: absolute;
+    background: #3560F6;
+    bottom: 50%;
+    left: 50%;
+    transform-origin: bottom center;
+    border-radius: 2px;
+}
+
+.hour { width: 4px; height: 25%; transform: translateX(-50%) rotate(300deg); } /* 短針 */
+.minute { width: 4px; height: 30%; transform: translateX(-50%) rotate(42deg); background: #3560F6; } /* 長針 */
