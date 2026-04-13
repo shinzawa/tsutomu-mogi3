@@ -17,7 +17,12 @@ class ShopController extends Controller
         } else {
             // ショップの一覧を表示するロジック
             $shops = Shop::all();
-            return view('shop.index', ['shops' => $shops]);
+            if (auth()->check()) {
+                $favoriteShopIds = auth()->user()->likes()->pluck('shop_id')->toArray();
+            } else {
+                $favoriteShopIds = [];
+            }
+            return view('shop.index', ['shops' => $shops, 'favoriteShopIds' => $favoriteShopIds]);
         }
     }
 
@@ -30,11 +35,12 @@ class ShopController extends Controller
             ->where('user_id', auth()->id());
         });
         $shops = $query->get();
+        $favoriteShopIds = $shops->pluck('id')->toArray();
 
         $reservations = Reserve::with('shop')
                  ->where('user_id', auth()->id())
                  ->get();
         $user = auth()->user();
-        return view('shop.mypage', compact(['user', 'shops', 'reservations']));
+        return view('shop.mypage', compact(['user', 'shops', 'reservations', 'favoriteShopIds']));
     }
 }

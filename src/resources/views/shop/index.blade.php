@@ -29,7 +29,11 @@
                         <button class="shop__button">詳しく見る</button>
                     </a>
                 </div>
-                <span style="color: #eeeeee" class="shop__heart">&hearts;</span>
+                @if(in_array($shop->id, $favoriteShopIds))
+                <span class="shop__red-heart">&hearts;</span>
+                @else
+                <span class="shop__heart">&hearts;</span>
+                @endif
             </div>
         </div>
         @endforeach

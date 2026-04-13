@@ -21,7 +21,7 @@
     font-size: 3em;
     font-weight: bold;
     color: #000000;
-    margin-top: 30px;
+    margin-top: 85px;
 
 }
 
@@ -38,6 +38,46 @@
     justify-content: space-between;
     align-items: center;
 }
+
+.clock {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 4px solid #3560F6;
+    position: relative;
+    background-color: #e6ecfe;
+    margin-top: 25px;
+    margin-left: 25px;
+}
+
+.clock::before {
+    content: '';
+    position: absolute;
+    inset: 5px;
+    border-radius: 50%;
+    background:
+        repeating-conic-gradient(
+            from -90deg,
+            #3560F6 0deg 6deg,
+            transparent 7deg 30deg
+        );
+    mask:
+        -webkit-mask: radial-gradient(circle, transparent 60%, black 61%);
+        mask: radial-gradient(circle, transparent 60%, black 61%);
+}
+
+  /* 針の共通設定 */
+.hand {
+    position: absolute;
+    background: #3560F6;
+    bottom: 50%;
+    left: 50%;
+    transform-origin: bottom center;
+    border-radius: 2px;
+}
+
+.hour { width: 4px; height: 25%; transform: translateX(-50%) rotate(300deg); } /* 短針 */
+.minute { width: 4px; height: 30%; transform: translateX(-50%) rotate(42deg); background: #3560F6; } /* 長針 */
 
 .reservation__header {
     display: flex;
@@ -118,9 +158,11 @@ table th, table td {
 }
 
 .shop__subtitle {
-    font-size: 3em;
-    color: #5F5F5F;
-    margin-top: 5px;
+    font-size: 4em;
+    font-weight: bold;
+    color: #000000;
+    margin-top: 75px;
+    margin-bottom: 10px;
 }
 
 .shop__title {
@@ -214,7 +256,7 @@ table th, table td {
     height: 60px;
     border-radius: 10px;
     background-color: #3560F6;
-    
+
     margin-left: 40px;
 }
 
@@ -239,49 +281,15 @@ table th, table td {
     margin-right: 30px;
 }
 
+.shop__red-heart {
+    font-size: 4em;
+    color: #FF0000;
+    margin-right: 30px;
+}
+
 @media (min-width: 768px) and (max-width: 850px) {
     .shop__img--container {
         width: 25vw;
         height: 10em;
     }
 }
-
-.clock {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: 4px solid #3560F6;
-    position: relative;
-    background-color: #e6ecfe;
-    margin-top: 25px;
-    margin-left: 25px;
-}
-
-.clock::before {
-    content: '';
-    position: absolute;
-    inset: 5px;
-    border-radius: 50%;
-    background:
-        repeating-conic-gradient(
-            from -90deg,
-            #3560F6 0deg 6deg,
-            transparent 7deg 30deg
-        );
-    mask:
-        -webkit-mask: radial-gradient(circle, transparent 60%, black 61%);
-        mask: radial-gradient(circle, transparent 60%, black 61%);
-}
-
-  /* 針の共通設定 */
-.hand {
-    position: absolute;
-    background: #3560F6;
-    bottom: 50%;
-    left: 50%;
-    transform-origin: bottom center;
-    border-radius: 2px;
-}
-
-.hour { width: 4px; height: 25%; transform: translateX(-50%) rotate(300deg); } /* 短針 */
-.minute { width: 4px; height: 30%; transform: translateX(-50%) rotate(42deg); background: #3560F6; } /* 長針 */
