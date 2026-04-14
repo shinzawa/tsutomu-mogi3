@@ -92,14 +92,19 @@
     font-size: 1.5em;
 }
 
+.shop__like-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 5.5em;
+}
+
 .shop__heart{
-    font-size: 4em;
     color: #EEEEEE;
     margin-right: 30px;
 }
 
 .shop__red-heart {
-    font-size: 4em;
     color: #FF0000;
     margin-right: 30px;
 }

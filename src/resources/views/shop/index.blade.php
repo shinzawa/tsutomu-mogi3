@@ -29,15 +29,20 @@
                         <button class="shop__button">詳しく見る</button>
                     </a>
                 </div>
-                @if(in_array($shop->id, $favoriteShopIds))
-                <span class="shop__red-heart">&hearts;</span>
-                @else
-                <span class="shop__heart">&hearts;</span>
-                @endif
+                <form action="/like-toggle" method="POST">
+                     @csrf
+                     <input type="hidden" name="shop_id" value="{{ $shop->id }}">
+                     <button type="submit" class="shop__like-button">
+                        @if(in_array($shop->id, $favoriteShopIds))
+                        <span class="shop__red-heart">&hearts;</span>
+                        @else
+                        <span class="shop__heart">&hearts;</span>
+                        @endif
+                    </button>
+                </form>
             </div>
         </div>
         @endforeach
     </div>
-</div>
 </div>
 @endsection

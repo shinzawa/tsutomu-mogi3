@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\LikeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,4 +30,5 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/detail/{shop_id}', [ShopController::class, 'show'])->name('shop.detail');
     Route::get('/mypage', [ShopController::class, 'mypage'])->name('shop.mypage');
     Route::get('/menu1', [MenuController::class, 'show'])->name('menu.menu1');
+    Route::post('/like-toggle', [LikeController::class, 'toggle'])->name('like-toggle');
 });

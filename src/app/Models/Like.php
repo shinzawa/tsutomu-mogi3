@@ -12,10 +12,6 @@ class Like extends Model
 
     protected $table = 'likes';
 
-    protected $primaryKey = ['user_id', 'shop_id'];
-
-    public $incrementing = false;
-
     protected $fillable = [
         'user_id',
         'shop_id',
