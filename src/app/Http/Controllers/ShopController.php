@@ -43,4 +43,23 @@ class ShopController extends Controller
         $user = auth()->user();
         return view('shop.mypage', compact(['user', 'shops', 'reservations', 'favoriteShopIds']));
     }
+
+    public function reservation(Request $request)
+    {
+        $request->validate([
+            'date' => 'required|date',
+            'time' => 'required',
+            'number_of_people' => 'required|integer|min:1',
+        ]);
+
+        $reserve = new Reserve();
+        $reserve->user_id = auth()->id();
+        $reserve->shop_id = $request->input('shop_id');
+        $reserve->date = $request->input('date');
+        $reserve->time = $request->input('time');
+        $reserve->number_of_people = $request->input('number_of_people');
+        $reserve->save();
+
+        return redirect()->route('shop.done');
+    }
 }

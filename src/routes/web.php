@@ -31,4 +31,5 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/mypage', [ShopController::class, 'mypage'])->name('shop.mypage');
     Route::get('/menu1', [MenuController::class, 'show'])->name('menu.menu1');
     Route::post('/like-toggle', [LikeController::class, 'toggle'])->name('like-toggle');
+    Route::post('/reservation', [ShopController::class, 'reservation'])->name('shop.reservation');
 });
