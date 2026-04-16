@@ -24,9 +24,9 @@
             @endif
         </a>
     </div>
-    @if( in_array(Route::currentRouteName(), ['shop.index']) )
+    @if( in_array(Route::currentRouteName(), ['shop.index', 'shop.index.post']) )
     <div class="header-search__wrapper">
-        <form class="header-search" action="/" method="get">
+        <form class="header-search" action="{{ route('shop.index.post') }}" method="post">
             @csrf
             <div class="select-wrapper">
                 <select name="area" class="header-search__select">

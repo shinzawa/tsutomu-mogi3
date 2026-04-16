@@ -47,5 +47,9 @@ class FortifyServiceProvider extends ServiceProvider
         });
 
         $this->app->singleton(RegisterResponse::class, CustomRegisterResponse::class);
+
+        Fortify::verifyEmailView(function () {
+            return view('auth.verify-email');
+        });
     }
 }

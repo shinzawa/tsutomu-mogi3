@@ -16,15 +16,13 @@ use App\Http\Controllers\LikeController;
 */
 
 Route::get('/', [ShopController::class, 'show'])->name('shop.index');
+Route::post('/', [ShopController::class, 'show'])->name('shop.index.post');
 Route::get('/menu2', [MenuController::class, 'show'])->name('menu.menu2');
 
 Route::get('/register/thanks', function () {
     return view('auth.thanks');
 })->name('register.thanks');
 
-Route::get('/done', function () {
-    return view('shop.done');
-})->name('shop.done');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/detail/{shop_id}', [ShopController::class, 'show'])->name('shop.detail');
@@ -32,4 +30,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/menu1', [MenuController::class, 'show'])->name('menu.menu1');
     Route::post('/like-toggle', [LikeController::class, 'toggle'])->name('like-toggle');
     Route::post('/reservation', [ShopController::class, 'reservation'])->name('shop.reservation');
+
+    Route::get('/done', function () {
+        return view('shop.done');
+    })->name('shop.done');
 });

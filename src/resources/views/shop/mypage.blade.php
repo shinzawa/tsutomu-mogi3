@@ -34,24 +34,44 @@
                 </div>
             </div>
             <div class="table__wrapper">
-                <table>
-                    <tr>
-                        <th>Shop</th>
-                        <td id="display-shop">{{$reservation->shop->name}}</td>
-                    </tr>
-                    <tr>
-                        <th>Date</th>
-                        <td id="display-date">{{$reservation->date}}</td>
-                    </tr>
-                    <tr>
-                        <th>Time</th>
-                        <td id="display-time">{{$reservation->time}}</td>
-                    </tr>
-                    <tr>
-                        <th>Number</th>
-                        <td id="display-number">{{$reservation->number_of_people}}</td>
-                    </tr>
-                </table>
+                <form action="/reserve/update/{{ $reservation->id }}" method="POST">
+                    @csrf
+                    <table>
+                        <tr>
+                            <th>Shop</th>
+                            <td>{{$reservation->shop->name}}</td>
+                        </tr>
+
+                        <tr>
+                            <th>Date</th>
+                            <td>
+                                <input type="date" name="date" value="{{ $reservation->date }}">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>Time</th>
+                            <td>
+                                <input type="time" name="time" value="{{ $reservation->time }}">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>Number</th>
+                            <td>
+                                <select name="number_of_people">
+                                    @for($i = 1; $i <= 10; $i++)
+                                        <option value="{{ $i }}" @selected($i == $reservation->number_of_people)>
+                                            {{ $i }}人
+                                        </option>
+                                    @endfor
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <button type="submit" class="update-btn">更新する</button>
+                </form>
             </div>
         </div>
         @endforeach

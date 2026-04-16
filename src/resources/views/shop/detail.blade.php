@@ -39,8 +39,13 @@
                 <input type="hidden" name="shop_id" value="{{$shop->id}}">
                 <div class="reservation__wrapper">
                     <p class="reservation__title">予約</p>
-                    <input class="date__input" type="date" name="date" id="input-date"">
+                    <input class="date__input" type="date" name="date" id="input-date">
                     </input>
+                    <div class="form__error">
+                        @error('date')
+                        {{ $message }}
+                        @enderror
+                    </div>
                     <div class=" select-wrapper">
                     <select name="time" class="time__select" id="input-time">
                         <option value="17:00">17:00</option>
@@ -48,20 +53,25 @@
                         <option value="19:00">19:00</option>
                         <option value="20:00">20:00</option>
                     </select>
+                    <div class="form__error">
+                        @error('time')
+                        {{ $message }}
+                        @enderror
+                    </div>
                 </div>
                 <div class="select-wrapper">
                     <select name="number_of_people" class="people__select" id="input-people">
-                        <option value="1">1人</option>
-                        <option value="2">2人</option>
-                        <option value="3">3人</option>
-                        <option value="4">4人</option>
-                        <option value="5">5人</option>
-                        <option value="6">6人</option>
-                        <option value="7">7人</option>
-                        <option value="8">8人</option>
-                        <option value="9">9人</option>
-                        <option value="10">10人</option>
+                    @for($i = 1; $i <= 10; $i++)
+                        <option value="{{ $i }}" >
+                            {{ $i }}人
+                        </option>
+                    @endfor
                     </select>
+                    <div class="form__error">
+                        @error('number_of_people')
+                        {{ $message }}
+                        @enderror
+                    </div>
                 </div>
                 <div class="reservation__items">
                     <div class="table__wrapper">

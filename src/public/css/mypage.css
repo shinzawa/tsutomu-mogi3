@@ -39,6 +39,11 @@
     align-items: center;
 }
 
+.clock__wrapper {
+    width: 90px;
+    height: 90px;
+}
+
 .clock {
     width: 50px;
     height: 50px;
@@ -95,6 +100,7 @@
     height: 50px;
     margin:60px 60px;
 }
+
 .circle-cross {
   /* 円のスタイル */
   width: 50px;
@@ -129,10 +135,6 @@
   transform: translate(-50%, -50%) rotate(-45deg);
 }
 
-.clock__wrapper {
-    width: 90px;
-    height: 90px;
-}
 
 table th {
     text-align: left;
