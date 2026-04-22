@@ -10,7 +10,10 @@
 @section('content')
 <div class="menu__container">
     <a href="{{ route('shop.index') }}" class="menu__btn">Home</a>
-    <a href="{{ route('logout') }}" class="menu__btn">Logout</a>
+    <form method="POST" action="{{ route('logout') }}" >
+        @csrf
+        <button type="submit" class="menu__btn">Logout</button>
+    </form>
     <a href="{{ route('shop.mypage') }}" class="menu__btn">Mypage</a>
 </div>
 @endsection('content')
