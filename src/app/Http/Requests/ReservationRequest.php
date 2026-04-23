@@ -24,6 +24,7 @@ class ReservationRequest extends FormRequest
     public function rules()
     {
         return [
+            'shop_id' => 'required|exists:shops,id',
             'date' => 'required|date',
             'time' => 'required',
             'number_of_people' => 'required|integer|min:1',
@@ -33,6 +34,8 @@ class ReservationRequest extends FormRequest
     public function messages()
     {
         return [
+            'shop_id.required' => '店舗IDを入力してください',
+            'shop_id.exists' => '存在しない店舗IDです',
             'date.required' => '年月を入力してください',
             'date.date' => '来店日は「年：月：日」形式で入力してください',
             'time.required' => '来店時刻を入力してください',
