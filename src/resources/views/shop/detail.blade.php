@@ -7,7 +7,6 @@
 @endsection
 
 @section('content')
-
 <div class="container">
     <div class="shop">
         <div class="shop__left">
@@ -47,57 +46,58 @@
                         @enderror
                     </div>
                     <div class=" select-wrapper">
-                    <select name="time" class="time__select" id="input-time">
-                        <option value="17:00">17:00</option>
-                        <option value="18:00">18:00</option>
-                        <option value="19:00">19:00</option>
-                        <option value="20:00">20:00</option>
-                    </select>
-                    <div class="form__error">
-                        @error('time')
-                        {{ $message }}
-                        @enderror
+                        <select name="time" class="time__select" id="input-time">
+                            <option value="17:00">17:00</option>
+                            <option value="18:00">18:00</option>
+                            <option value="19:00">19:00</option>
+                            <option value="20:00">20:00</option>
+                        </select>
+                        <div class="form__error">
+                            @error('time')
+                            {{ $message }}
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="select-wrapper">
+                        <select name="number_of_people" class="people__select" id="input-people">
+                        @for($i = 1; $i <= 10; $i++)
+                            <option value="{{ $i }}" >
+                                {{ $i }}人
+                            </option>
+                        @endfor
+                        </select>
+                        <div class="form__error">
+                            @error('number_of_people')
+                            {{ $message }}
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="reservation__items">
+                        <div class="table__wrapper">
+                            <table>
+                                <tr>
+                                    <th>Shop</th>
+                                    <td id="display-shop">{{$shop->name}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Date</th>
+                                    <td id="display-date">2021/04/01</td>
+                                </tr>
+                                <tr>
+                                    <th>Time</th>
+                                    <td id="display-time">17:00</td>
+                                </tr>
+                                <tr>
+                                    <th>Number</th>
+                                    <td id="display-number">1人</td>
+                                </tr>
+                            </table>
+                        </div>
                     </div>
                 </div>
-                <div class="select-wrapper">
-                    <select name="number_of_people" class="people__select" id="input-people">
-                    @for($i = 1; $i <= 10; $i++)
-                        <option value="{{ $i }}" >
-                            {{ $i }}人
-                        </option>
-                    @endfor
-                    </select>
-                    <div class="form__error">
-                        @error('number_of_people')
-                        {{ $message }}
-                        @enderror
-                    </div>
-                </div>
-                <div class="reservation__items">
-                    <div class="table__wrapper">
-                        <table>
-                            <tr>
-                                <th>Shop</th>
-                                <td id="display-shop">{{$shop->name}}</td>
-                            </tr>
-                            <tr>
-                                <th>Date</th>
-                                <td id="display-date">2021/04/01</td>
-                            </tr>
-                            <tr>
-                                <th>Time</th>
-                                <td id="display-time">17:00</td>
-                            </tr>
-                            <tr>
-                                <th>Number</th>
-                                <td id="display-number">1人</td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
+                <button class="reservation__button" type="submit">予約する</button>
+            </form>
         </div>
-        <button class="reservation__button" type="submit">予約する</button>
-        </form>
     </div>
 </div>
 <script src="{{ asset('/js/detail.js') }}"></script>

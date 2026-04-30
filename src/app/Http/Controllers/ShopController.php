@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Shop;
-use App\Models\Reserve;
+use App\Models\Reservation;
 use App\Http\Requests\ReservationRequest;
 
 class ShopController extends Controller
@@ -72,7 +72,7 @@ class ShopController extends Controller
         $shops = $query->get();
         $favoriteShopIds = $shops->pluck('id')->toArray();
 
-        $reservations = Reserve::with('shop')
+        $reservations = Reservation::with('shop')
                  ->where('user_id', auth()->id())
                  ->get();
         $user = auth()->user();
@@ -81,13 +81,22 @@ class ShopController extends Controller
 
     public function reservation(ReservationRequest $request)
     {
-        $reserve = new Reserve();
+        $reserve = new Reservation();
         $reserve->user_id = auth()->id();
         $reserve->shop_id = $request->input('shop_id');
         $reserve->date = $request->input('date');
         $reserve->time = $request->input('time');
         $reserve->number_of_people = $request->input('number_of_people');
         $reserve->save();
+
+        return redirect()->route('shop.done');
+    }
+
+    public function update(Request $request, $reservation_id)
+    {
+
+        $reservation = Reservation::find($reservation_id);
+        $reservation->update($request->all());
 
         return redirect()->route('shop.done');
     }

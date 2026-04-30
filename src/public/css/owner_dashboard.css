@@ -1,0 +1,126 @@
+.menu__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 1200px;
+    height: auto;
+    margin: 80px auto;
+    background-color: #FFFFFF;
+    text-align: center;
+    margin-top: 260px;
+    color: #3560F6;
+}
+
+.menu__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: #FFFFFF;
+    color: #3560F6;
+    font-size: 64px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+.circle-cross {
+  /* 円のスタイル */
+  width: 50px;
+  height: 50px;
+  background-color: #3560f6;
+  border: 4px solid #e6ecfe;
+  border-radius: 50%; /* 正円にする */
+  position: relative; /* 擬似要素の基準にする */
+  cursor: pointer;
+}
+
+/* クロスの線の共通スタイル */
+.circle-cross::before,
+.circle-cross::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60%;  /* 線の長さ */
+  height: 4px; /* 線の太さ */
+  background-color: #e6ecfe;
+  border-radius: 2px;
+}
+
+/* 1本目の線（右下がり） */
+.circle-cross::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+/* 2本目の線（右上がり） */
+.circle-cross::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.back__wrapper {
+    width: 50px;
+    height: 50px;
+    margin:30px 30px;
+}
+
+.header__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: top;
+    width: 887px;
+    height: auto;
+    margin-top: 20px;
+    margin-left: 240px;
+    /* width: 100%;
+    height: 100%; */
+    color: #3560f6;
+}
+
+.title__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 1200px;
+    height: auto;
+    margin: 20px auto;
+    background-color: #FFFFFF;
+    text-align: center;
+    color: #3560F6;
+    font-size: 1.7em;
+}
+.button__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* ボタン間のスペース */
+    margin-top: 20px;
+    background-color: #3560F6;
+    color: #FFFFFF;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+.btn-primary {
+    background-color: #3560F6;
+    color: #FFFFFF;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+.btn-secondary {
+    background-color:#3560F6;
+    color: #FFFFFF;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+}

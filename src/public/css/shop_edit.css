@@ -1,0 +1,190 @@
+.menu__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 1200px;
+    height: auto;
+    margin: 80px auto;
+    background-color: #FFFFFF;
+    text-align: center;
+    margin-top: 260px;
+}
+
+.menu__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: #FFFFFF;
+    color: #3560F6;
+    font-size: 64px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+.circle-cross {
+  /* 円のスタイル */
+  width: 50px;
+  height: 50px;
+  background-color: #3560f6;
+  border: 4px solid #e6ecfe;
+  border-radius: 50%; /* 正円にする */
+  position: relative; /* 擬似要素の基準にする */
+  cursor: pointer;
+}
+
+/* クロスの線の共通スタイル */
+.circle-cross::before,
+.circle-cross::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60%;  /* 線の長さ */
+  height: 4px; /* 線の太さ */
+  background-color: #e6ecfe;
+  border-radius: 2px;
+}
+
+/* 1本目の線（右下がり） */
+.circle-cross::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+/* 2本目の線（右上がり） */
+.circle-cross::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.back__wrapper {
+    width: 50px;
+    height: 50px;
+    margin:30px 30px;
+}
+
+.header__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: top;
+    width: 887px;
+    height: auto;
+    margin-top: 20px;
+    margin-left: 240px;
+    /* width: 100%;
+    height: 100%; */
+    color: #3560f6;
+}
+
+.title__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form-control {
+    width: 550px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    margin-bottom: 0;
+    font-size: 1.0em;
+}
+
+.time__select, .people__select {
+    width: 550px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    margin-bottom: 0;
+    font-size: 0.7em;
+    /* font-weight: bold; */
+    color: #000000;
+    padding: 0 0;
+}
+
+.input__wrapper {
+    display: flex;
+    flex-direction: space-between;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.7em;
+    color: #3560f6;
+    margin: 10px;
+}
+
+.textarea__input {
+    width: 700px;
+    height: 100px;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    margin-bottom: 0;
+    font-size: 1.7em;
+    /* font-weight: bold; */
+    color: #000000;
+    padding: 0;
+}
+
+.input__wrapper
+.form-label, .textarea__input label {
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+    font-size: 1.0em;
+    color: #3560f6;
+}
+
+.input__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.7em;
+    color: #3560f6;
+    margin: 10px;
+}
+
+.textarea-control {
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    margin-bottom: 0;
+    font-size: 1.0em;
+    /* font-weight: bold; */
+    color: #000000;
+    padding: 10px;
+        width: 550px;
+    box-sizing: border-box;
+}
+
+.form__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 1200px;
+    height: auto;
+    margin: 80px auto;
+    background-color: #FFFFFF;
+    text-align: center;
+    margin-top: 30px;
+}
+
+
+.textarea__input,
+.input__wrapper {
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-primary {
+    width: 700px;
+    background-color: #3560f6;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}

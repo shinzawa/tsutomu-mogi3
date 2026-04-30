@@ -17,6 +17,7 @@ class Shop extends Model
         'genre',
         'description',
         'img_url',
+        'shop_owner_id',
     ];
 
     public function user()
@@ -32,5 +33,15 @@ class Shop extends Model
     public function reserves()
     {
         return $this->hasMany('App\Models\Reserve');
+    }
+
+    public function owner()
+    {
+        return $this->belongsTo(User::class, 'shop_owner_id');
+    }
+
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::class);
     }
 }

@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Reserve;
+use App\Models\Reservation;
 
 class ReservationsTableSeeder extends Seeder
 {
@@ -14,7 +14,7 @@ class ReservationsTableSeeder extends Seeder
      */
     public function run()
     {
-//        Reserve::factory()->count(10)->create();
+//        Reservation::factory()->count(10)->create();
           $param = [
             'user_id' => 1,
             'shop_id' => 1,
@@ -22,6 +22,6 @@ class ReservationsTableSeeder extends Seeder
             'time' => '17:00:00',
             'number_of_people' => 1,
           ];
-          Reserve::create($param);
+          Reservation::create($param);
     }
 }

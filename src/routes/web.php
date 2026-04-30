@@ -9,6 +9,11 @@ use App\Http\Requests\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
+use App\Http\Controllers\Admin\AdminOwnerController;
+use App\Http\Controllers\Admin\AdminShopController;
+use App\Http\Controllers\Owner\OwnerDashboardController;
+use App\Http\Controllers\Owner\OwnerShopController;
+use App\Http\Controllers\Owner\OwnerReservationController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,13 +40,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/menu1', [MenuController::class, 'show'])->name('menu.menu1');
     Route::post('/like-toggle', [LikeController::class, 'toggle'])->name('like-toggle');
     Route::post('/reservation', [ShopController::class, 'reservation'])->name('shop.reservation');
+    Route::post('/reservation/update/{reservation_id}', [ShopController::class, 'update'])->name('shop.reservation.update');
 
     Route::get('/done', function () {
         return view('shop.done');
     })->name('shop.done');
 });
 
-// Route::post('login', [AuthenticatedSessionController::class, 'store'])->middleware('email');
 Route::post('/register', [RegisteredUserController::class, 'store']);
 
 Route::get('/email/verify', function () {
@@ -49,17 +54,33 @@ Route::get('/email/verify', function () {
 })->name('verification.notice');
 
 Route::post('/email/verification-notification', function (Request $request) {
-    // $request->user()->sendEmailVerificationNotification();
     session()->get('unauthenticated_user')->sendEmailVerificationNotification();
     session()->put('resent', true);
     return back()->with('message', 'Verification link sent!');
 })->name('verification.send');
 
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-    // Auth::loginUsingId($request->route('id'));
     $request->fulfill();
-    // Auth::logout();
     session()->forget('unauthenticated_user');
     return redirect('/register/thanks');
 })->name('verification.verify');
 
+// 管理者
+Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/menu', [AdminOwnerController::class, 'menu'])->name('menu');
+    Route::get('/owners', [AdminOwnerController::class, 'index'])->name('owners.index');
+    Route::get('/owners/create', [AdminOwnerController::class, 'create'])->name('owners.create');
+    Route::post('/owners', [AdminOwnerController::class, 'store'])->name('owners.store');
+    Route::get('/shops', [AdminShopController::class, 'index'])->name('shops.index');
+});
+
+// 店舗代表者
+Route::middleware(['auth', 'role:owner'])->prefix('owner')->name('owner.')->group(function () {
+    Route::get('/menu', [OwnerDashboardController::class, 'menu'])->name('menu');
+    Route::get('/dashboard', [OwnerDashboardController::class, 'index'])->name('dashboard');
+    Route::get('/reservations', [OwnerReservationController::class, 'index'])->name('reservations.index');
+    Route::get('/shop/edit', [OwnerShopController::class, 'edit'])->name('shop.edit');
+    Route::post('/shop/update', [OwnerShopController::class, 'update'])->name('shop.update');
+    Route::get('/shop/create', [OwnerShopController::class, 'create'])->name('shop.create');
+    Route::post('/shop/store', [OwnerShopController::class, 'store'])->name('shop.store');
+});

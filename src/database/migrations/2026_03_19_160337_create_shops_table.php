@@ -20,6 +20,8 @@ class CreateShopsTable extends Migration
             $table->string('genre');
             $table->text('description')->nullable();
             $table->string('img_url')->nullable();
+            $table->unsignedBigInteger('shop_owner_id')->nullable();
+            $table->foreign('shop_owner_id')->references('id')->on('users')->onDelete('set null');
             $table->timestamps();
         });
     }

@@ -21,6 +21,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
+        'email_verified_at',
+        'role',
     ];
 
     /**
@@ -45,5 +47,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function likes()
     {
         return $this->hasMany('App\Models\Like');
+    }
+
+    public function shop()
+    {
+        return $this->hasOne(Shop::class, 'shop_owner_id');
     }
 }

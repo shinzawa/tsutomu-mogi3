@@ -34,8 +34,9 @@
                 </div>
             </div>
             <div class="table__wrapper">
-                <form action="/reserve/update/{{ $reservation->id }}" method="POST">
+                <form action="/reservation/update/{{ $reservation->id }}" method="POST">
                     @csrf
+                    <input type="hidden" name="ship_id" value="{{$reservation->shop->id}}">
                     <table>
                         <tr>
                             <th>Shop</th>
@@ -45,32 +46,56 @@
                         <tr>
                             <th>Date</th>
                             <td>
-                                <input type="date" name="date" value="{{ $reservation->date }}">
+                                <input class="date__input" type="date" name="date" value="{{ $reservation->date }}">
+                                <div class="form__error">
+                                    @error('date')
+                                    {{ $message }}
+                                    @enderror
+                                </div>
                             </td>
                         </tr>
-
                         <tr>
                             <th>Time</th>
                             <td>
-                                <input type="time" name="time" value="{{ $reservation->time }}">
+                                <div class=" select-wrapper">
+                                    <select name="time" class="time__select" id="input-time">
+                                        @php $selected_time = $reservation->time;@endphp
+                                        @foreach(['17:00', '18:00', '19:00', '20:00'] as $time)
+                                            <option value="{{ $time }}" {{ str_starts_with($selected_time, $time) ? 'selected' : '' }}>
+                                                {{ $time }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    <div class="form__error">
+                                        @error('time')
+                                        {{ $message }}
+                                        @enderror
+                                    </div>
+                                </div>
                             </td>
                         </tr>
-
                         <tr>
                             <th>Number</th>
                             <td>
-                                <select name="number_of_people">
+                                <select class="people__select" name="number_of_people">
                                     @for($i = 1; $i <= 10; $i++)
-                                        <option value="{{ $i }}" @selected($i == $reservation->number_of_people)>
-                                            {{ $i }}人
-                                        </option>
-                                    @endfor
+                                    @php $number_of_people = (int)$reservation->number_of_people; @endphp
+                                <option value="{{ $i }}" {{ $i == $number_of_people ? 'selected' : '' }}>
+                                    {{ $i }}人
+                                </option>
+                                @endfor
                                 </select>
+                                <div class="form__error">
+                                    @error('number_of_people')
+                                    {{ $message }}
+                                    @enderror
+                                </div>
                             </td>
                         </tr>
                     </table>
-
-                    <button type="submit" class="update-btn">更新する</button>
+                    <div class="update-btn__wrapper">
+                        <button type="submit" class="update-btn">更新する</button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -86,9 +111,9 @@
 
                 <img src="{{ \Storage::url($shop->img_url) }}" class="shop__img" alt="店舗画像">
                 <div class="shop__content">
-                <div class="shop__name-wrapper">
-                    <p class="shop__name">{{$shop->name}}</p>
-                </div>
+                    <div class="shop__name-wrapper">
+                        <p class="shop__name">{{$shop->name}}</p>
+                    </div>
                     <div class="shop__details">
                         <p class="shop__area">#{{$shop->area}}</p>
                         <p class="shop__genre">#{{$shop->genre}}</p>

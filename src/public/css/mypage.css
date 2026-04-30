@@ -88,8 +88,7 @@
     display: flex;
     justify-content: left;
     align-items: center;
-    margin-top: 20px;
-    margin-left: 20px;
+    margin: 20px 20px;
 }
 
 .reservation__name {
@@ -98,7 +97,27 @@
 .reservation__cancel-wrapper {
     width: 50px;
     height: 50px;
-    margin:60px 60px;
+    margin:30px 30px;
+}
+
+.date__input {
+    width: 550px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    margin-bottom: 0;
+}
+
+.time__select, .people__select {
+    width: 550px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    margin-bottom: 0;
+    font-size: 0.7em;
+    /* font-weight: bold; */
+    color: #000000;
+    padding: 0 0;
 }
 
 .circle-cross {
@@ -289,6 +308,26 @@ table th, table td {
     margin-right: 30px;
 }
 
+.update-btn__wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 30px;
+    border-radius: 10px;
+    background-color: #3560F6;
+    margin-top: 20px;
+    font-size: 1.5em;
+    color: #FFFFFF;
+}
+
+.update-btn {
+    background: none;
+    border: none;
+    color: #FFFFFF;
+    font-size: 0.5em;
+    cursor: pointer;
+}
 @media (min-width: 768px) and (max-width: 850px) {
     .shop__img--container {
         width: 25vw;

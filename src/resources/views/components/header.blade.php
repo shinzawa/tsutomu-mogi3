@@ -1,28 +1,27 @@
 <header class="header">
     <div class="header__logo">
-        <a href="/">
-            @if( in_array(Route::currentRouteName(), ['menu.menu1', 'menu.menu2']) )
+        @if( in_array(Route::currentRouteName(), ['menu.menu1', 'menu.menu2']) )
+        <a href="{{ url()->previous() }}">
             <div class="header__menu">
                 <div class="icon-menu">
                     <div class="icon-menu__cross"></div>
                 </div>
             </div>
-            @else
-            <div class="header__inner">
-                <div class="icon-rese">
-                    <div class="icon-rese__topline">
-                    </div>
-                    <div class="icon_rese__midline">
-                    </div>
-                    <div class="icon_rese__bottomline">
-                    </div>
-                </div>
-                <a class="header__logo-name" href="/">
-                    Rese
-                </a>
-            </div>
-            @endif
         </a>
+        @else
+        <div class="header__inner">
+            <div class="icon-rese">
+                <div class="icon-rese__topline"></div>
+                <div class="icon_rese__midline"></div>
+                <div class="icon_rese__bottomline"></div>
+            </div>
+            @if (Auth::check())
+                <a class="header__logo-name" href="{{ route('menu.menu1') }}">Rese</a>
+            @else
+                <a class="header__logo-name" href="{{ route('menu.menu2') }}">Rese</a>
+            @endif
+        </div>
+        @endif
     </div>
     @if( in_array(Route::currentRouteName(), ['shop.index', 'shop.index.post']) )
     <div class="header-search__wrapper">
