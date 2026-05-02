@@ -14,27 +14,33 @@
             <h1 class="title">Reservation List</h1>
         </div>
     </div>
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>Customer Name</th>
-            <th>Date</th>
-            <th>Time</th>
-            <th>Number of People</th>
-            <th>Email</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach($reservations as $r)
-        <tr>
-            <td>{{ $r->user->name }}</td>
-            <td>{{ $r->date }}</td>
-            <td>{{ $r->time }}</td>
-            <td>{{ $r->number_of_people }}</td>
-            <td>{{ $r->user->email }}</td>
-        </tr>
-        @endforeach
-    </tbody>
-</table>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Customer Name</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Number of People</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($reservations as $reservation)
+            <tr>
+                <td>{{ $reservation->user->name }}</td>
+                <td>{{ $reservation->date }}</td>
+                <td>{{ $reservation->time }}</td>
+                <td>{{ $reservation->number_of_people }}</td>
+                <td>{{ $reservation->user->email }}</td>
+                <td>
+                    <a href="{{ route('owner.reservation.notifyForm', $reservation->id) }}"
+                        class="btn btn-sm btn-primary">
+                        メール送信
+                    </a>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
 </div>
 @endsection

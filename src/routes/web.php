@@ -83,4 +83,10 @@ Route::middleware(['auth', 'role:owner'])->prefix('owner')->name('owner.')->grou
     Route::post('/shop/update', [OwnerShopController::class, 'update'])->name('shop.update');
     Route::get('/shop/create', [OwnerShopController::class, 'create'])->name('shop.create');
     Route::post('/shop/store', [OwnerShopController::class, 'store'])->name('shop.store');
+
+    Route::get('/reservations/{reservation}/notify', [OwnerReservationController::class, 'notifyForm'])
+        ->name('reservation.notifyForm');
+
+    Route::post('/reservations/{reservation}/notify', [OwnerReservationController::class, 'sendNotify'])
+        ->name('reservation.sendNotify');
 });

@@ -10,22 +10,27 @@
         </a>
         @else
         <div class="header__inner">
-            <div class="icon-rese">
+            @php
+            if (Auth::check()) {
+            if (Auth::user()->role === 'user') {
+            $link = route('menu.menu1');
+            } elseif (Auth::user()->role === 'owner') {
+            $link = route('owner.menu');
+            } elseif (Auth::user()->role === 'admin') {
+            $link = route('admin.menu');
+            }
+            } else {
+            $link = route('menu.menu2');
+            }
+            @endphp
+
+            <a href="{{ $link }}" class="icon-rese">
                 <div class="icon-rese__topline"></div>
                 <div class="icon_rese__midline"></div>
                 <div class="icon_rese__bottomline"></div>
-            </div>
-            @if (Auth::check())
-                @if (Auth::user()->role === 'user')
-                    <a class="header__logo-name" href="{{ route('menu.menu1') }}">Rese</a>
-                @elseif (Auth::user()->role === 'owner')
-                    <a class="header__logo-name" href="{{ route('owner.menu') }}">Rese</a>
-                @elseif (Auth::user()->role === 'admin')
-                    <a class="header__logo-name" href="{{ route('admin.menu') }}">Rese</a>
-                @endif
-            @else
-                <a class="header__logo-name" href="{{ route('menu.menu2') }}">Rese</a>
-            @endif
+            </a>
+
+            <a class="header__logo-name" href="{{ $link }}">Rese</a>
         </div>
         @endif
     </div>
