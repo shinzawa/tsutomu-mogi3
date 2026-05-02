@@ -13,13 +13,6 @@
         <div class="title__wrapper">
             <h1 class="title">Shop List</h1>
         </div>
-        <div class="back__wrapper">
-            <a href="/admin/menu">
-                <button class="back-btn">
-                    <div class="circle-cross"></div>
-                </button>
-            </a>
-        </div>
     </div>
     <table class="admin-table">
         <thead>

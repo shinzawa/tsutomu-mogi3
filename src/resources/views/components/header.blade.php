@@ -1,6 +1,6 @@
 <header class="header">
     <div class="header__logo">
-        @if( in_array(Route::currentRouteName(), ['menu.menu1', 'menu.menu2']) )
+        @if( in_array(Route::currentRouteName(), ['menu.menu1', 'menu.menu2', 'admin.menu', 'owner.menu']) )
         <a href="{{ url()->previous() }}">
             <div class="header__menu">
                 <div class="icon-menu">
@@ -16,7 +16,13 @@
                 <div class="icon_rese__bottomline"></div>
             </div>
             @if (Auth::check())
-                <a class="header__logo-name" href="{{ route('menu.menu1') }}">Rese</a>
+                @if (Auth::user()->role === 'user')
+                    <a class="header__logo-name" href="{{ route('menu.menu1') }}">Rese</a>
+                @elseif (Auth::user()->role === 'owner')
+                    <a class="header__logo-name" href="{{ route('owner.menu') }}">Rese</a>
+                @elseif (Auth::user()->role === 'admin')
+                    <a class="header__logo-name" href="{{ route('admin.menu') }}">Rese</a>
+                @endif
             @else
                 <a class="header__logo-name" href="{{ route('menu.menu2') }}">Rese</a>
             @endif

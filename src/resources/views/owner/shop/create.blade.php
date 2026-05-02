@@ -13,13 +13,6 @@
         <div class="title__wrapper">
             <h1 class="title">Create Shop Information</h1>
         </div>
-        <div class="back__wrapper">
-            <a href="/owner/menu">
-                <button class="back-btn">
-                    <div class="circle-cross"></div>
-                </button>
-            </a>
-        </div>
     </div>
 <div class="form__wrapper">
         <form action="{{ route('owner.shop.store') }}" method="POST" enctype="multipart/form-data">

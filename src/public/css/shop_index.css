@@ -68,14 +68,11 @@
 
 .header__top {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: top;
     width: 887px;
     height: auto;
-    margin-top: 20px;
-    margin-left: 240px;
-    /* width: 100%;
-    height: 100%; */
+    margin: 20px auto;
     color: #3560f6;
 }
 

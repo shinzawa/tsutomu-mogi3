@@ -12,12 +12,12 @@ class LoginResponse implements LoginResponseContract
 
         // 管理者なら admin menu へ
         if ($user->role === 'admin') {
-            return redirect()->route('admin.menu');
+            return redirect()->route('admin.owners.index');
         }
 
         // 店舗代表者なら owner menu へ
         if ($user->role === 'owner') {
-            return redirect()->route('owner.menu');
+            return redirect()->route('owner.dashboard');
         }
 
         // それ以外は通常のユーザー用

@@ -15,13 +15,6 @@
         <div class="title__wrapper">
             <h1 class="title">Shop Owner Dashboard</h1>
         </div>
-        <div class="back__wrapper">
-            <a href="/owner/menu">
-                <button class="back-btn">
-                    <div class="circle-cross"></div>
-                </button>
-            </a>
-        </div>
     </div>
     <div class="card__container">
         <h3>{{ $shop->name }}</h3>

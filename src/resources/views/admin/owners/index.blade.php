@@ -12,13 +12,6 @@
         <div class="title__wrapper">
             <h1 class="title">Owner List</h1>
         </div>
-        <div class="back__wrapper">
-            <a href="/admin/menu">
-                <button class="back-btn">
-                    <div class="circle-cross"></div>
-                </button>
-            </a>
-        </div>
     </div>
     <a href="{{ route('admin.owners.create') }}" class="menu__btn">
         Add Owner
