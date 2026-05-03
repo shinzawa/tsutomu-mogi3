@@ -28,4 +28,13 @@ class Reservation extends Model
     {
         return $this->belongsTo('App\Models\Shop');
     }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($reservation) {
+            $reservation->checkin_token = (string) \Illuminate\Support\Str::uuid();
+        });
+    }
 }

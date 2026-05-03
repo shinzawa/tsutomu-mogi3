@@ -4,6 +4,7 @@ use App\Http\Controllers\ShopController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\RegisteredUserController;
+use App\Http\Controllers\User\ReservationController;
 // use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Http\Requests\EmailVerificationRequest;
 use Illuminate\Http\Request;
@@ -14,6 +15,7 @@ use App\Http\Controllers\Admin\AdminShopController;
 use App\Http\Controllers\Owner\OwnerDashboardController;
 use App\Http\Controllers\Owner\OwnerShopController;
 use App\Http\Controllers\Owner\OwnerReservationController;
+use App\Http\Controllers\Owner\CheckinController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,7 +38,9 @@ Route::get('/register/thanks', function () {
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/detail/{shop_id}', [ShopController::class, 'show'])->name('shop.detail');
-    Route::get('/mypage', [ShopController::class, 'mypage'])->name('shop.mypage');
+    Route::get('/user/reservations/index', [ReservationController::class, 'index'])->name('user.reservations.index');
+    Route::get('/user/reservations/{reservation}', [ReservationController::class, 'show'])
+        ->name('user.reservations.show');
     Route::get('/menu1', [MenuController::class, 'show'])->name('menu.menu1');
     Route::post('/like-toggle', [LikeController::class, 'toggle'])->name('like-toggle');
     Route::post('/reservation', [ShopController::class, 'reservation'])->name('shop.reservation');
@@ -86,7 +90,9 @@ Route::middleware(['auth', 'role:owner'])->prefix('owner')->name('owner.')->grou
 
     Route::get('/reservations/{reservation}/notify', [OwnerReservationController::class, 'notifyForm'])
         ->name('reservation.notifyForm');
-
     Route::post('/reservations/{reservation}/notify', [OwnerReservationController::class, 'sendNotify'])
         ->name('reservation.sendNotify');
+
+    Route::get('/checkin', [CheckinController::class, 'scan'])->name('checkin.scan');
+    Route::post('/checkin/verify', [CheckinController::class, 'verify'])->name('checkin.verify');
 });

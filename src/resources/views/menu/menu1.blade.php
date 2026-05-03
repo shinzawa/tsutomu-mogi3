@@ -15,6 +15,6 @@
         @csrf
         <button type="submit" class="menu__btn">Logout</button>
     </form>
-    <a href="{{ route('shop.mypage') }}" class="menu__btn">Mypage</a>
+    <a href="{{ route('user.reservations.index') }}" class="menu__btn">Mypage</a>
 </div>
 @endsection('content')

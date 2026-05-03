@@ -61,24 +61,6 @@ class ShopController extends Controller
         ]);
     }
 
-    public function mypage()
-    {
-        $query = Shop::query();
-        $query->whereIn('id', function ($query) {
-            $query->select('shop_id')
-            ->from('likes')
-            ->where('user_id', auth()->id());
-        });
-        $shops = $query->get();
-        $favoriteShopIds = $shops->pluck('id')->toArray();
-
-        $reservations = Reservation::with('shop')
-                 ->where('user_id', auth()->id())
-                 ->get();
-        $user = auth()->user();
-        return view('shop.mypage', compact(['user', 'shops', 'reservations', 'favoriteShopIds']));
-    }
-
     public function reservation(ReservationRequest $request)
     {
         $reserve = new Reservation();
@@ -92,9 +74,8 @@ class ShopController extends Controller
         return redirect()->route('shop.done');
     }
 
-    public function update(Request $request, $reservation_id)
+    public function update(ReservationRequest $request, $reservation_id)
     {
-
         $reservation = Reservation::find($reservation_id);
         $reservation->update($request->all());
 

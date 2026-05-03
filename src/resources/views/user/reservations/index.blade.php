@@ -92,6 +92,14 @@
                                 </div>
                             </td>
                         </tr>
+                        <tr>
+                        <th>Detail</th>
+                        <td>
+                            <a href="{{ route('user.reservations.show', $reservation->id) }}" class="btn btn-primary">
+                            詳細を見る
+                            </a>
+                        </td>
+                        </tr>
                     </table>
                     <div class="update-btn__wrapper">
                         <button type="submit" class="update-btn">更新する</button>
