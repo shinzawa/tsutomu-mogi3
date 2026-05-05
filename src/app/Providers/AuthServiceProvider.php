@@ -6,6 +6,8 @@ use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvid
 use Illuminate\Support\Facades\Gate;
 use App\Models\Shop;
 use App\Policies\ShopPolicy;
+use App\Models\Reservation;
+use App\Policies\ReservationPolicy;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -16,7 +18,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         Shop::class => ShopPolicy::class,
-        \App\Models\Reservation::class => \App\Policies\ReservationPolicy::class,
+        Reservation::class => ReservationPolicy::class,
     ];
 
     /**

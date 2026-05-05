@@ -24,7 +24,8 @@
             <a href="{{ route('owner.shop.create') }}" class="btn-primary">Create shop information</a>
             <a href="{{ route('owner.shop.edit') }}" class="btn-primary">Edit shop information</a>
             <a href="{{ route('owner.reservations.index') }}" class="btn-secondary">View reservation list</a>
-            <a href="{{ route('owner.checkin.scan') }}">Checkin</a>
+            <a href="{{ route('owner.reviews.index') }}" class="btn-secondary">Reviews List</a>
+            <a href="{{ route('owner.checkin.scan') }}" class="btn-secondary">Checkin</a>
         </div>
     </div>
 </div>

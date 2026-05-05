@@ -20,6 +20,11 @@ class CreateReservationsTable extends Migration
             $table->date('date');
             $table->time('time');
             $table->integer('number_of_people');
+            $table->uuid('checkin_token')->unique()->nullable();
+            $table->timestamp('checked_in_at')->nullable();
+            $table->string('payment_status')->default('pending');
+            $table->string('payment_intent_id')->nullable();
+            $table->integer('price_at_booking')->nullable();
             $table->timestamps();
         });
     }

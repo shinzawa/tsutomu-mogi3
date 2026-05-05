@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Reservation extends Model
 {
@@ -17,6 +18,11 @@ class Reservation extends Model
         'date',
         'time',
         'number_of_people',
+        'checkin_token',
+        'checked_in_at',
+        'payment_status',
+        'payment_intent_id',
+        'price_at_booking',
     ];
 
     public function user()
@@ -34,7 +40,12 @@ class Reservation extends Model
         parent::boot();
 
         static::creating(function ($reservation) {
-            $reservation->checkin_token = (string) \Illuminate\Support\Str::uuid();
+            $reservation->checkin_token = (string) Str::uuid();
         });
+    }
+
+    public function review()
+    {
+        return $this->hasOne(Review::class);
     }
 }

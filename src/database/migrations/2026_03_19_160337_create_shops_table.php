@@ -22,6 +22,7 @@ class CreateShopsTable extends Migration
             $table->string('img_url')->nullable();
             $table->unsignedBigInteger('shop_owner_id')->nullable();
             $table->foreign('shop_owner_id')->references('id')->on('users')->onDelete('set null');
+            $table->integer('price')->default(0);
             $table->timestamps();
         });
     }

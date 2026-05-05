@@ -15,7 +15,10 @@ use App\Http\Controllers\Admin\AdminShopController;
 use App\Http\Controllers\Owner\OwnerDashboardController;
 use App\Http\Controllers\Owner\OwnerShopController;
 use App\Http\Controllers\Owner\OwnerReservationController;
+use App\Http\Controllers\Owner\OwnerReviewController;
 use App\Http\Controllers\Owner\CheckinController;
+use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\PaymentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -45,6 +48,20 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/like-toggle', [LikeController::class, 'toggle'])->name('like-toggle');
     Route::post('/reservation', [ShopController::class, 'reservation'])->name('shop.reservation');
     Route::post('/reservation/update/{reservation_id}', [ShopController::class, 'update'])->name('shop.reservation.update');
+    Route::get('/review/{reservation}', [ReviewController::class, 'create'])
+        ->name('review.create');
+
+    Route::post('/review/{reservation}', [ReviewController::class, 'store'])
+        ->name('review.store');
+
+    Route::post('/payment/create/{shop}', [PaymentController::class, 'create'])
+        ->name('payment.create');
+
+    Route::get('/payment/success', [PaymentController::class, 'success'])
+        ->name('payment.success');
+
+    Route::get('/payment/cancel', [PaymentController::class, 'cancel'])
+        ->name('payment.cancel');
 
     Route::get('/done', function () {
         return view('shop.done');
@@ -95,4 +112,7 @@ Route::middleware(['auth', 'role:owner'])->prefix('owner')->name('owner.')->grou
 
     Route::get('/checkin', [CheckinController::class, 'scan'])->name('checkin.scan');
     Route::post('/checkin/verify', [CheckinController::class, 'verify'])->name('checkin.verify');
-});
+
+    Route::get('/reviews', [OwnerReviewController::class, 'index'])
+        ->name('reviews.index');
+ });

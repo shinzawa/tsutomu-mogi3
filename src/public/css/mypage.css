@@ -27,7 +27,7 @@
 
 .reservation__items {
     width: 887px;
-    height: 538px;
+    height: auto;
     background-color: #3560F6;
     border-radius: 10px;
     font-size: 2em;
@@ -327,6 +327,16 @@ table th, table td {
     color: #FFFFFF;
     font-size: 0.5em;
     cursor: pointer;
+}
+
+.detail-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3560F6;
+    color: #FFFFFF;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1em;
 }
 @media (min-width: 768px) and (max-width: 850px) {
     .shop__img--container {

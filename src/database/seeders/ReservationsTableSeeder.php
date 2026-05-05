@@ -21,6 +21,7 @@ class ReservationsTableSeeder extends Seeder
             'date' => '2026-06-01 17:00:00',
             'time' => '17:00:00',
             'number_of_people' => 1,
+            'checked_in_at' => '2026-06-01 20:00:00',
           ];
           Reservation::create($param);
     }

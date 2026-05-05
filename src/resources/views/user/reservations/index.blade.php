@@ -34,10 +34,10 @@
                 </div>
             </div>
             <div class="table__wrapper">
-                <form action="/reservation/update/{{ $reservation->id }}" method="POST">
-                    @csrf
-                    <input type="hidden" name="ship_id" value="{{$reservation->shop->id}}">
-                    <table>
+                <table>
+                    <form action="/reservation/update/{{ $reservation->id }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="ship_id" value="{{$reservation->shop->id}}">
                         <tr>
                             <th>Shop</th>
                             <td>{{$reservation->shop->name}}</td>
@@ -61,9 +61,9 @@
                                     <select name="time" class="time__select" id="input-time">
                                         @php $selected_time = $reservation->time;@endphp
                                         @foreach(['17:00', '18:00', '19:00', '20:00'] as $time)
-                                            <option value="{{ $time }}" {{ str_starts_with($selected_time, $time) ? 'selected' : '' }}>
-                                                {{ $time }}
-                                            </option>
+                                        <option value="{{ $time }}" {{ str_starts_with($selected_time, $time) ? 'selected' : '' }}>
+                                            {{ $time }}
+                                        </option>
                                         @endforeach
                                     </select>
                                     <div class="form__error">
@@ -79,11 +79,11 @@
                             <td>
                                 <select class="people__select" name="number_of_people">
                                     @for($i = 1; $i <= 10; $i++)
-                                    @php $number_of_people = (int)$reservation->number_of_people; @endphp
-                                <option value="{{ $i }}" {{ $i == $number_of_people ? 'selected' : '' }}>
-                                    {{ $i }}人
-                                </option>
-                                @endfor
+                                        @php $number_of_people=(int)$reservation->number_of_people; @endphp
+                                        <option value="{{ $i }}" {{ $i == $number_of_people ? 'selected' : '' }}>
+                                            {{ $i }}人
+                                        </option>
+                                        @endfor
                                 </select>
                                 <div class="form__error">
                                     @error('number_of_people')
@@ -93,18 +93,49 @@
                             </td>
                         </tr>
                         <tr>
+                            <th></th>
+                            <td>
+                                <div class="update-btn__wrapper">
+                                    <button type="submit" class="update-btn">更新する</button>
+                                </div>
+
+                            </td>
+                        </tr>
+                    </form>
+                    <tr>
                         <th>Detail</th>
                         <td>
-                            <a href="{{ route('user.reservations.show', $reservation->id) }}" class="btn btn-primary">
-                            詳細を見る
+                            <a href="{{ route('user.reservations.show', $reservation->id) }}" class="detail-link">
+                                詳細を見る
                             </a>
                         </td>
-                        </tr>
-                    </table>
-                    <div class="update-btn__wrapper">
-                        <button type="submit" class="update-btn">更新する</button>
-                    </div>
-                </form>
+                    </tr>
+                    <tr>
+                        <th>Review</th>
+                        <td>
+                            @if ($reservation->checkin_time && !$reservation->review)
+                            <a href="{{ route('review.create', $reservation->id) }}">
+                                評価する
+                            </a>
+                            @endif
+
+                            @if ($reservation->review)
+                            <span>評価済み</span>
+                            @endif
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Payment</th>
+                        <td>
+                            <form action="{{ route('payment.create', $reservation->shop->id) }}" method="POST">
+                                @csrf
+                                <button type="submit" class="btn btn-primary">
+                                    予約して支払う（{{ number_format($reservation->shop->price) }}円）
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                </table>
             </div>
         </div>
         @endforeach

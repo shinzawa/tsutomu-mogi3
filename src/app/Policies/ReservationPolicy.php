@@ -116,4 +116,10 @@ class ReservationPolicy
     {
         //
     }
+
+    public function review(User $user, Reservation $reservation)
+    {
+        return $reservation->user_id === $user->id
+            && $reservation->checkin_time !== null;
+    }
 }
