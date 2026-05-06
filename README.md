@@ -40,8 +40,20 @@ http://localhost
 - Stripeを利用して決済する機能
 - タスクスケジューラ利用、予約当日朝に予約情報を利用者に送信する機能
 
-## 使用技術(実行環境)
-- 例) Laravel8.x(言語やフレームワーク、バージョンなどが記載されているとよい)
+
+## 使用技術
+
+・PHP 8.1.34
+・Laravel 8.83.8  
+・MySQL 8.0.26  
+・nginx 1.21.1  
+・MailHog latest
+
+## URL
+
+・開発環境：http://localhost/  
+・phpMyAdmin：http://localhost:8080/  
+・MailHog：http://localhost:8025/
 
 ## テーブル設計
 
@@ -117,7 +129,7 @@ http://localhost
 
 ## ER図
 
-<img src="ER.drawio.png" style="width:50%">
+<img src="ER.drawio.png" style="width:100%">
 
 # 環境構築
 
@@ -154,19 +166,5 @@ Lavaral 環境構築
 　 pass：password
 店舗代表者
 
-
-## 使用技術
-
-・PHP 8.1.34
-・Laravel 8.83.8  
-・MySQL 8.0.26  
-・nginx 1.21.1  
-・MailHog latest
-
-## URL
-
-・開発環境：http://localhost/  
-・phpMyAdmin：http://localhost:8080/  
-・MailHog：http://localhost:8025/
 
 
