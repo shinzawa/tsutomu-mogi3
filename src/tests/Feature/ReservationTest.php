@@ -8,6 +8,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use Database\Seeders\DatabaseSeeder;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+
 class ReservationTest extends TestCase
 {
     /**
@@ -21,6 +22,28 @@ class ReservationTest extends TestCase
     {
         parent::setUp();
         $this->seed(DatabaseSeeder::class);
+    }
+
+    public function test_reservation_normal()
+    {
+        $this->actingAs(User::factory()->create(['email_verified_at' => now()]));
+
+        $response = $this->post('/reservation', [
+            'shop_id' => 1,
+            'date' => "2026-05-01",
+            'time' => "19:00:00",
+            'number_of_people' => 2,
+        ]);
+        $response->assertStatus(302);
+        $response->assertRedirect(route('shop.done'));
+
+        $this->assertDatabaseHas('reservations', [
+            'id' => 2,
+            'shop_id' => 1,
+            'date' => "2026-05-01",
+            'time' => "19:00:00",
+            'number_of_people' => 2,
+        ]);
     }
 
     public function test_reservation_validation_date()

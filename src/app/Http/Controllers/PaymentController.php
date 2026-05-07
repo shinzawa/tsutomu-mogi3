@@ -10,7 +10,7 @@ use Stripe\Checkout\Session;
 
 class PaymentController extends Controller
 {
-    public function create(Request $request, Shop $shop)
+    public function create(Request $request, Reservation $reservation)
     {
         Stripe::setApiKey(config('services.stripe.secret'));
 
@@ -19,14 +19,15 @@ class PaymentController extends Controller
             'line_items' => [[
                 'price_data' => [
                     'currency' => 'jpy',
-                    'unit_amount' => $shop->price,
+                    'unit_amount' => $reservation->shop->price,
                     'product_data' => [
-                        'name' => $shop->name . ' 予約料金',
+                        'name' => $reservation->shop->name . ' 予約料金',
                     ],
                 ],
                 'quantity' => 1,
             ]],
-            'success_url' => route('payment.success') . '?session_id={CHECKOUT_SESSION_ID}&shop_id=' . $shop->id,
+            'success_url' => route('payment.success')
+                . '?session_id={CHECKOUT_SESSION_ID}&reservation_id=' . $reservation->id,
             'cancel_url' => route('payment.cancel'),
         ]);
 
@@ -38,22 +39,15 @@ class PaymentController extends Controller
         Stripe::setApiKey(config('services.stripe.secret'));
 
         $sessionId = $request->session_id;
-        $shopId = $request->shop_id;
+        $reservationId = $request->reservation_id;
 
-        $session = Session::retrieve($sessionId);
-        $paymentIntentId = $session->payment_intent;
+        // 既存予約を取得
+        $reservation = Reservation::findOrFail($reservationId);
+        $session = \Stripe\Checkout\Session::retrieve($request->session_id);
 
-        // 予約を作成
-        $reservation = Reservation::create([
-            'user_id' => auth()->id(),
-            'shop_id' => $shopId,
-            'reserved_at' => now(),
-            'date' => now()->toDateString(),        // ← 追加
-            'time' => now()->format('H:i:s'),       // ← 追加
-            'number_of_people' => 1,                // ← 追加
+        $reservation->update([
             'payment_status' => 'paid',
-            'payment_intent_id' => $paymentIntentId,
-            'price_at_booking' => $session->amount_total,
+            'payment_intent_id' => $session->payment_intent_id,
         ]);
 
         return view('payment.success', compact('reservation'));

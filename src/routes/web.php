@@ -54,7 +54,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/review/{reservation}', [ReviewController::class, 'store'])
         ->name('review.store');
 
-    Route::post('/payment/create/{shop}', [PaymentController::class, 'create'])
+    Route::post('/payment/create/{reservation}', [PaymentController::class, 'create'])
         ->name('payment.create');
 
     Route::get('/payment/success', [PaymentController::class, 'success'])
