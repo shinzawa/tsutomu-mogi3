@@ -12,15 +12,22 @@
 </head>
 
 @if( in_array(Route::currentRouteName(), ['menu.menu1', 'menu.menu2']) )
-<body class="menu">
-@else
-<body>
-@endif
 
-    @include('components.header')
-    <main>
-        @yield('content')
-    </main>
-</body>
+<body class="menu">
+    @else
+
+    <body>
+        @endif
+        @include('components.header')
+        <main>
+            @if( in_array(Route::currentRouteName(), ['menu.menu1', 'menu.menu2', 'login', 'register', 'shop.done', 'register.thanks', 'verification.notice', 'admin.menu', 'admin.owners.index', 'admin.owners.create', 'admin.shops.index', 'owner.dashboard', 'owner.shop.create', 'owner.shops.edit', 'owner.reservations.index']) )
+            <div class="content">
+                @else
+                <div class="content--wide">
+                    @endif
+                    @yield('content')
+                </div>
+        </main>
+    </body>
 
 </html>

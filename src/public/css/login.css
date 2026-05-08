@@ -1,5 +1,5 @@
 .login-form {
-    width: 800px;
+    min-width: 768px;
     height: 462px;
     margin: 420px auto;
     border-radius: 10px;

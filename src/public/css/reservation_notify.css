@@ -42,13 +42,30 @@
     align-items: center;
 }
 
-.table-bordered {
-    border: 1px solid #e6ecfe;
-    border-collapse: collapse;
-    width: 100%;
-    margin-top: 40px;
-    font-size: 24px;
+
+.input__wrapper
+.form-label, .textarea__input label {
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+    font-size: 1.0em;
     color: #3560f6;
+}
+
+.form-control {
+    width: 550px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    margin-bottom: 0;
+    font-size: 1.0em;
+}
+
+.input__wrapper {
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    margin: 30px;
 }
 
 .btn-primary {

@@ -333,12 +333,23 @@ border-radius: 10px;
     font-size: 20px;
 }
 
-@media (min-width: 768px) and (max-width: 850px) {
+/* @media (min-width: 768px) and (max-width: 850px) {
     .header__logo {
         width: 25vw;
     }
+} */
+/* PC・タブレット向けのスタイル (768px〜) */
+.content {
+    width: 50%;
+    min-width: 768px;
+    margin: 0 auto;
 }
-
+/* 767px以下のスタイル (スマホ) */
+@media screen and (max-width: 767px) {
+  .content {
+    width: 100%;
+  }
+}
 .icon-rese {
     width: 80px;
     height: 80px;

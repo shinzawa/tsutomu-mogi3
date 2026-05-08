@@ -34,7 +34,7 @@
                 <td>{{ $reservation->user->email }}</td>
                 <td>
                     <a href="{{ route('owner.reservation.notifyForm', $reservation->id) }}"
-                        class="btn btn-sm btn-primary">
+                        class="btn-primary">
                         メール送信
                     </a>
                 </td>
