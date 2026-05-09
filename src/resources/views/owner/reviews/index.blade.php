@@ -8,6 +8,7 @@
 @endsection
 
 @section('content')
+<div class="review__container">
 <h2>レビュー一覧</h2>
 
 @foreach ($reviews as $review)
@@ -23,4 +24,5 @@
     </small>
 </div>
 @endforeach
+</div>
 @endsection

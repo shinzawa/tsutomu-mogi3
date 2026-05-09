@@ -13,7 +13,7 @@
     <a href="/owner/shop/create" class="menu__btn">Create Shop Information</a>
     <a href="/owner/shop/edit" class="menu__btn">Edit Shop Information</a>
     <a href="/owner/reservations" class="menu__btn">Reservation List</a>
-    <a href="{{ route('owner.reviews.index') }}">Reviews List</a>
+    <a href="{{ route('owner.reviews.index') }}" class="menu__btn">Reviews List</a>
     <form method="POST" action="{{ route('logout') }}">
         @csrf
         <button type="submit" class="menu__btn">Logout</button>

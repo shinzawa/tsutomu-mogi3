@@ -1,0 +1,46 @@
+.detail__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 768px;
+    height: auto;
+    margin: 80px auto;
+    background-color: #FFFFFF;
+    text-align: center;
+    margin-top: 260px;
+}
+
+.detail__container h2 {
+    color: #3560F6;
+    font-size: 1.5em;
+}
+
+.detail__container h3 {
+    color: #3560F6;
+    font-size: 1.5em;
+}
+
+.detail__container p {
+    color: #3560F6;
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+.detail__container img {
+    margin-top: 20px;
+    width: 800px;
+}
+
+.detail__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: #FFFFFF;
+    color: #3560F6;
+    font-size: 2.0em;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
+}

@@ -51,6 +51,7 @@ class PaymentController extends Controller
         ]);
 
         return view('payment.success', compact('reservation'));
+
     }
 
     public function cancel()

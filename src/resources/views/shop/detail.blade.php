@@ -8,8 +8,8 @@
 
 @section('content')
 <div class="container">
-    <div class="shop">
-        <div class="shop__left">
+    <div class="shop__detail">
+        <div class="shop__left item">
             <div class="shop__name-wrapper">
                 <a href="/">
                     <button class="shop__button">
@@ -32,7 +32,7 @@
                 <span style="color: #eeeeee" class="shop__heart">&hearts;</span>
             </div>
         </div>
-        <div class="reservation__card">
+        <div class="reservation__card item">
             <form class="form" action="/reservation" method="POST">
                 @csrf
                 <input type="hidden" name="shop_id" value="{{$shop->id}}">

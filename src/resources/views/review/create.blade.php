@@ -5,11 +5,12 @@
 @endsection
 
 @section('content')
+<div class="review__container">
 <h2>評価する</h2>
 
 
 
-<form action="{{ route('review.store', $reservation->id) }}" method="POST">
+<form action="{{ route('review.store', $reservation->id) }}" class="review__form" method="POST">
     @csrf
 
     <div class="rating">
@@ -33,6 +34,7 @@
         <textarea name="comment" rows="4" style="width:100%;" placeholder="コメント（任意）"></textarea>
     </div>
 
-    <button type="submit" style="margin-top:20px;">送信</button>
+    <button type="submit" style="margin-top:20px;" class="review__btn">送信</button>
 </form>
+</div>
 @endsection

@@ -1,15 +1,17 @@
 @extends('layouts.app')
-
+@section('css')
+<link rel="stylesheet" href="{{ asset('css/owner_checkin.css')}}">
+@endsection
 @section('content')
-<div class="container">
+<div class="checkin__container">
     <h2>QRコード読み取り</h2>
 
     @if(session('error'))
-        <p style="color:red">{{ session('error') }}</p>
+    <p style="color:red">{{ session('error') }}</p>
     @endif
 
     @if(session('success'))
-        <p style="color:green">{{ session('success') }}</p>
+    <p style="color:green">{{ session('success') }}</p>
     @endif
 
     <div id="preview" style="width:300px;"></div>

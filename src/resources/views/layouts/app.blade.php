@@ -20,7 +20,7 @@
         @endif
         @include('components.header')
         <main>
-            @if( in_array(Route::currentRouteName(), ['menu.menu1', 'menu.menu2', 'login', 'register', 'shop.done', 'register.thanks', 'verification.notice', 'admin.menu', 'admin.owners.index', 'admin.owners.create', 'admin.shops.index', 'owner.dashboard', 'owner.shop.create', 'owner.shops.edit', 'owner.reservations.index']) )
+            @if( in_array(Route::currentRouteName(), ['menu.menu1', 'menu.menu2', 'login', 'register', 'shop.done', 'register.thanks', 'verification.notice', 'admin.menu', 'admin.owners.index', 'admin.owners.create', 'admin.shops.index', 'owner.dashboard', 'owner.shop.create', 'owner.shops.edit', 'owner.reservations.index', 'payment.cancel', 'payment.success', 'review.create', 'user.reservations.show', 'owner.checkin.scan', 'owner.reviews.index'] ) )
             <div class="content">
                 @else
                 <div class="content--wide">
