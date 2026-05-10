@@ -138,11 +138,12 @@ Docker ビルド
 1. docker-compose up -d --build
 
 Lavaral 環境構築  
+
 1. docker-compose exec php bash  
 1. composer install  
 1. cp .env.example .env
-1. mkdir ./src/storage/app/public/img
-1. mv ./src/public/img/copy_storage_img/*.jpg ./src/storage/app/public/img
+1. mkdir ./storage/app/public/img
+1. mv ./public/img/copy_storage_img/*.jpg ./storage/app/public/img
 1. php artisan storage:link
 1. chmod -R 777 storage bootstrap/cache
 1. .env ファイルの変更
@@ -158,42 +159,6 @@ Lavaral 環境構築
 5. php artisan key:generate
 6. php artisan migrate
 7. php artisan db:seed
-8. test_database 作成: docker-compose exec mysql bash 
-```
-# mysql -u root -p
-
-mysql> show databases;
-+--------------------+
-| Database           |
-+--------------------+
-| information_schema |
-| laravel_db         |
-| mysql              |
-| performance_schema |
-| sys                |
-+--------------------+
-5 rows in set (0.01 sec)
-
-mysql> create database test_database;
-Query OK, 1 row affected (0.01 sec)
-
-mysql> show databases;
-+--------------------+
-| Database           |
-+--------------------+
-| information_schema |
-| laravel_db         |
-| mysql              |
-| performance_schema |
-| sys                |
-| test_database      |
-+--------------------+
-6 rows in set (0.00 sec)
-
-mysql> exit;
-# exit
-```
-9. php artisan test
 
 ## Stripeについて
 コンビニ支払いとカード支払いのオプションがありますが、決済画面にてコンビニ支払いを選択しますと、レシートを印刷する画面に遷移します。そのため、カード支払いを成功させた場合に意図する画面遷移が行える想定です。<br>
@@ -221,3 +186,17 @@ https://docs.stripe.com/payments/checkout?locale=ja-JP
 　 id：owner1@gmail.com／owner2@gmail.com/.../owner20@gmail.com  
    pass: password
 
+## PHPUnitを利用したテストに関して
+以下のコマンド:  
+```
+//テスト用データベースの作成
+docker-compose exec mysql bash
+mysql -u root -p
+//パスワードはrootと入力
+create database test_database;
+
+docker-compose exec php bash
+php artisan migrate:fresh --env=testing
+php artisan test
+
+```
