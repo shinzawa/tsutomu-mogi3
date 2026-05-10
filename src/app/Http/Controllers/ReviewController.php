@@ -36,7 +36,7 @@ class ReviewController extends Controller
             'comment'        => $request->comment,
         ]);
 
-        return redirect()->route('mypage.reservations')
+        return redirect()->route('user.reservations.index.reservations')
             ->with('success', '評価を送信しました');
     }
 }

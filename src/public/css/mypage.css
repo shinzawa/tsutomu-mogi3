@@ -27,6 +27,11 @@ min-width: 300px;
 
 }
 
+.no-reservations {
+    font-size: 1.5em;
+    color: #5F5F5F;
+    margin-top: 20px;
+}
 .reservation__items {
     width: 887px;
     height: auto;

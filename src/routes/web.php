@@ -40,32 +40,20 @@ Route::get('/register/thanks', function () {
 
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/detail/{shop_id}', [ShopController::class, 'show'])->name('shop.detail');
-    Route::get('/user/reservations/index', [ReservationController::class, 'index'])->name('user.reservations.index');
-    Route::get('/user/reservations/{reservation}', [ReservationController::class, 'show'])
-        ->name('user.reservations.show');
     Route::get('/menu1', [MenuController::class, 'show'])->name('menu.menu1');
+    Route::get('/detail/{shop_id}', [ShopController::class, 'show'])->name('shop.detail');
+    Route::post('/reservation', [ReservationController::class, 'create'])->name('shop.reservation');
+    Route::get('/user/reservations/index', [ReservationController::class, 'index'])->name('user.reservations.index');
+    Route::get('/user/reservations/{reservation}', [ReservationController::class, 'show'])->name('user.reservations.show');
+    Route::post('/reservation/update/{reservation_id}', [ReservationController::class, 'update'])->name('shop.reservation.update');
+    Route::post('/reservation/cancel/{reservation_id}', [ReservationController::class, 'cancel'])->name('shop.reservation.cancel');
+    Route::get('/user/reservations/done', [ReservationController::class, 'done'])->name('user.reservations.done');
     Route::post('/like-toggle', [LikeController::class, 'toggle'])->name('like-toggle');
-    Route::post('/reservation', [ShopController::class, 'reservation'])->name('shop.reservation');
-    Route::post('/reservation/update/{reservation_id}', [ShopController::class, 'update'])->name('shop.reservation.update');
-    Route::get('/review/{reservation}', [ReviewController::class, 'create'])
-        ->name('review.create');
-
-    Route::post('/review/{reservation}', [ReviewController::class, 'store'])
-        ->name('review.store');
-
-    Route::post('/payment/create/{reservation}', [PaymentController::class, 'create'])
-        ->name('payment.create');
-
-    Route::get('/payment/success', [PaymentController::class, 'success'])
-        ->name('payment.success');
-
-    Route::get('/payment/cancel', [PaymentController::class, 'cancel'])
-        ->name('payment.cancel');
-
-    Route::get('/done', function () {
-        return view('shop.done');
-    })->name('shop.done');
+    Route::get('/review/{reservation}', [ReviewController::class, 'create'])->name('review.create');
+    Route::post('/review/{reservation}', [ReviewController::class, 'store'])->name('review.store');
+    Route::post('/payment/create/{reservation}', [PaymentController::class, 'create'])->name('payment.create');
+    Route::get('/payment/success', [PaymentController::class, 'success'])->name('payment.success');
+    Route::get('/payment/cancel', [PaymentController::class, 'cancel'])->name('payment.cancel');
 });
 
 Route::post('/register', [RegisteredUserController::class, 'store']);
@@ -99,20 +87,14 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
 Route::middleware(['auth', 'role:owner'])->prefix('owner')->name('owner.')->group(function () {
     Route::get('/menu', [OwnerDashboardController::class, 'menu'])->name('menu');
     Route::get('/dashboard', [OwnerDashboardController::class, 'index'])->name('dashboard');
-    Route::get('/reservations', [OwnerReservationController::class, 'index'])->name('reservations.index');
-    Route::get('/shop/edit', [OwnerShopController::class, 'edit'])->name('shop.edit');
-    Route::post('/shop/update', [OwnerShopController::class, 'update'])->name('shop.update');
     Route::get('/shop/create', [OwnerShopController::class, 'create'])->name('shop.create');
     Route::post('/shop/store', [OwnerShopController::class, 'store'])->name('shop.store');
-
-    Route::get('/reservations/{reservation}/notify', [OwnerReservationController::class, 'notifyForm'])
-        ->name('reservation.notifyForm');
-    Route::post('/reservations/{reservation}/notify', [OwnerReservationController::class, 'sendNotify'])
-        ->name('reservation.sendNotify');
-
+    Route::get('/shop/edit', [OwnerShopController::class, 'edit'])->name('shop.edit');
+    Route::post('/shop/update', [OwnerShopController::class, 'update'])->name('shop.update');
+    Route::get('/reservations', [OwnerReservationController::class, 'index'])->name('reservations.index');
+    Route::get('/reservations/{reservation}/notify', [OwnerReservationController::class, 'notifyForm'])->name('reservation.notifyForm');
+    Route::post('/reservations/{reservation}/notify', [OwnerReservationController::class, 'sendNotify'])->name('reservation.sendNotify');
     Route::get('/checkin', [CheckinController::class, 'scan'])->name('checkin.scan');
     Route::post('/checkin/verify', [CheckinController::class, 'verify'])->name('checkin.verify');
-
-    Route::get('/reviews', [OwnerReviewController::class, 'index'])
-        ->name('reviews.index');
- });
+    Route::get('/reviews', [OwnerReviewController::class, 'index'])->name('reviews.index');
+});

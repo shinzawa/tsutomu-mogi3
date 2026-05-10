@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'mypage')
+@section('title', 'user.reservations.index')
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/mypage.css') }}">
@@ -13,6 +13,9 @@
 <div class="container">
     <div class="reservation__wrapper">
         <p class="reservation__title">予約状況</p>
+        @if($reservations->isEmpty())
+        <p class="no-reservations">予約はありません</p>
+        @else
         @foreach($reservations as $index => $reservation)
         <div class="reservation__items">
             <div class="reservation__top">
@@ -26,11 +29,12 @@
                     <p class="reservation__name">予約{{$index + 1}}</p>
                 </div>
                 <div class="reservation__cancel-wrapper">
-                    <a href="/cancel/{{ $reservation->id }}">
+                    <form action="/reservation/cancel/{{ $reservation->id }}" method="POST">
+                        @csrf
                         <button class="reservation__cancel-button">
                             <div class="circle-cross"></div>
                         </button>
-                    </a>
+                    </form>
                 </div>
             </div>
             <div class="table__wrapper">
@@ -42,7 +46,6 @@
                             <th>Shop</th>
                             <td>{{$reservation->shop->name}}</td>
                         </tr>
-
                         <tr>
                             <th>Date</th>
                             <td>
@@ -139,15 +142,18 @@
             </div>
         </div>
         @endforeach
+        @endif
     </div>
     <div class="shop">
         <p class="shop__subtitle">{{$user->name}}さん
         </p>
         <p class="shop__title">お気に入り店舗</p>
         <div class="shop__right">
+            @if($shops->isEmpty())
+            <p class="no-favorites">お気に入り店舗はありません</p>
+            @else
             @foreach($shops as $shop)
             <div class="shop__card">
-
                 <img src="{{ \Storage::url($shop->img_url) }}" class="shop__img" alt="店舗画像">
                 <div class="shop__content">
                     <div class="shop__name-wrapper">
@@ -172,6 +178,7 @@
                 </div>
             </div>
             @endforeach
+            @endif
         </div>
     </div>
 </div>
