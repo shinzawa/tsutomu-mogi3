@@ -140,7 +140,8 @@ Docker ビルド
 Lavaral 環境構築  
 1. docker-compose exec php bash  
 1. composer install  
-1. cp .env.example .env  
+1. cp .env.example .env
+1. chmod -R 777 storage bootstrap/cache
 1. .env ファイルの変更
 
 ```
@@ -151,10 +152,45 @@ Lavaral 環境構築
 　MAIL_FROM_ADDRESSに送信元アドレスを設定
 ```
 
-5. php artisan key:generate  
-6. php artisan migrate  
-7. php artisan db:seed  
-8. php artisan test
+5. php artisan key:generate
+6. php artisan migrate
+7. php artisan db:seed
+8. test_database 作成: docker-compose exec mysql bash 
+```
+# mysql -u root -p
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| laravel_db         |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.01 sec)
+
+mysql> create database test_database;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| laravel_db         |
+| mysql              |
+| performance_schema |
+| sys                |
+| test_database      |
++--------------------+
+6 rows in set (0.00 sec)
+
+mysql> exit;
+# exit
+```
+9. php artisan test
 
 ## ログイン情報
 

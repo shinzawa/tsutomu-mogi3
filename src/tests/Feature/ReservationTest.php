@@ -35,7 +35,7 @@ class ReservationTest extends TestCase
             'number_of_people' => 2,
         ]);
         $response->assertStatus(302);
-        $response->assertRedirect(route('shop.done'));
+        $response->assertRedirect(route('user.reservations.done'));
 
         $this->assertDatabaseHas('reservations', [
             'id' => 2,
