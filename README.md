@@ -151,10 +151,10 @@ Lavaral 環境構築
 　MAIL_FROM_ADDRESSに送信元アドレスを設定
 ```
 
-5.php artisan key:generate  
-6.php artisan migrate  
-7.php artisan db:seed  
-8.php artisan test
+5. php artisan key:generate  
+6. php artisan migrate  
+7. php artisan db:seed  
+8. php artisan test
 
 ## ログイン情報
 
