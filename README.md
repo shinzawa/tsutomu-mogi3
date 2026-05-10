@@ -134,14 +134,14 @@ http://localhost
 # 環境構築
 
 Docker ビルド  
-1.git clone git@github.com:shinzawa/tsutomu-mogi3.git
-2.docker-compose up -d --build
+1. git clone git@github.com:shinzawa/tsutomu-mogi3.git
+1. docker-compose up -d --build
 
 Lavaral 環境構築  
-1.docker-compose exec php bash  
-2.composer install  
-3.cp .env.example .env  
-4..env ファイルの変更
+1. docker-compose exec php bash  
+1. composer install  
+1. cp .env.example .env  
+1. .env ファイルの変更
 
 ```
 　DB_HOSTをmysqlに変更
@@ -161,10 +161,12 @@ Lavaral 環境構築
 一般ユーザー  
 　 id：general1@gmail.com／general2@gmail.com  
 　 pass：password  
+
 管理者  
 　 id：admin1@gmail.com  
 　 pass：password
+
 店舗代表者
-
-
+　 id：owner1@gmail.com／owner2@gmail.com/.../owner20@gmail.com  
+   pass: password
 
