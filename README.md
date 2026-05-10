@@ -141,6 +141,9 @@ Lavaral 環境構築
 1. docker-compose exec php bash  
 1. composer install  
 1. cp .env.example .env
+1. mkdir ./src/storage/app/public/img
+1. mv ./src/public/img/copy_storage_img/*.jpg ./src/storage/app/public/img
+1. php artisan storage:link
 1. chmod -R 777 storage bootstrap/cache
 1. .env ファイルの変更
 
@@ -191,6 +194,18 @@ mysql> exit;
 # exit
 ```
 9. php artisan test
+
+## Stripeについて
+コンビニ支払いとカード支払いのオプションがありますが、決済画面にてコンビニ支払いを選択しますと、レシートを印刷する画面に遷移します。そのため、カード支払いを成功させた場合に意図する画面遷移が行える想定です。<br>
+
+また、StripeのAPIキーは以下のように設定をお願いいたします。
+```
+STRIPE_PUBLIC_KEY="パブリックキー"
+STRIPE_SECRET_KEY="シークレットキー"
+```
+
+以下のリンクは公式ドキュメントです。<br>
+https://docs.stripe.com/payments/checkout?locale=ja-JP
 
 ## ログイン情報
 
